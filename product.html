@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .product-detail-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 800px;
+      margin: 4rem auto 0 auto;
+      background: #23272f;
+      border-radius: 14px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+      padding: 2.5rem 2rem 2rem 2rem;
+      gap: 2.5rem;
+    }
+    .product-detail-img {
+      flex: 0 0 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-detail-img img {
+      width: 100%;
+      max-width: 340px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #181a1b;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .product-detail-info {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #f1f1f1;
+    }
+    .product-detail-info h2 {
+      margin: 0 0 1.2rem 0;
+      font-size: 2.3rem;
+      color: #4f8cff;
+      font-weight: 700;
+      text-align: left;
+    }
+    .product-detail-info .price {
+      color: #4f8cff;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .back-btn {
+      margin-top: 2rem;
+      background: #23272f;
+      color: #4f8cff;
+      border: 2px solid #4f8cff;
+      border-radius: 6px;
+      padding: 0.6rem 1.3rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      width: fit-content;
+    }
+    .back-btn:hover {
+      background: #4f8cff;
+      color: #fff;
+    }
+    @media (max-width: 700px) {
+      .product-detail-flex {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0.5rem 1.5rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .product-detail-img {
+        max-width: 100%;
+      }
+      .product-detail-img img {
+        max-width: 100%;
+      }
+      .product-detail-info h2 {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width:800px;margin:3rem auto 0 auto;text-align:left;">
+    <a href="index.html" class="back-btn" style="margin-bottom:2rem; position:static; top:auto; left:auto; z-index:auto;">&#8592; Back to Shop</a>
+  </div>
+  <div class="product-detail-flex">
+    <div class="product-detail-img-col" style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+      <img id="product-img" src="" alt="Product image" style="max-width:320px; width:100%; border-radius:12px; object-fit:cover; background:#181a1b; box-shadow:0 2px 16px rgba(0,0,0,0.18);">
+      <div id="product-thumbnails" style="display:flex;gap:0.7rem;justify-content:center;margin-top:1rem;"></div>
+      <div class="product-info-tab" style="margin-top:1.7rem; background:#181a1b; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,0.13); padding:1.2rem 1.1rem; color:#e0e0e0; max-width:340px; width:100%;">
+        <div style="font-weight:600; color:#4f8cff; font-size:1.1rem; margin-bottom:0.7rem;">Product Info</div>
+        <div id="product-info-text">This is a placeholder for product information. You can add a description, material, size, or any other details about the product here.</div>
+      </div>
+    </div>
+    <div class="product-detail-info" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:1.1rem;flex:1;min-width:0;max-width:340px;width:100%;margin-left:2.2rem;">
+      <h2 id="product-name"></h2>
+      <div class="price" id="product-price"></div>
+      <div class="quantity-section" style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.1rem;">
+        <label style="font-size:1.05rem;color:#f1f1f1;">Quantity:</label>
+        <div style="display:flex;align-items:center;gap:0.8rem;">
+          <button class="quantity-btn minus-btn" id="product-minus-btn" style="background:#23272f;color:#4f8cff;border:2px solid #4f8cff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;font-weight:bold;transition:background 0.2s,color 0.2s;">-</button>
+          <span id="product-quantity-display" style="color:#f1f1f1;font-size:1.1rem;font-weight:600;min-width:20px;text-align:center;">1</span>
+          <button class="quantity-btn plus-btn" id="product-plus-btn" style="background:#23272f;color:#4f8cff;border:2px solid #4f8cff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;font-weight:bold;transition:background 0.2s,color 0.2s;">+</button>
+        </div>
+      </div>
+      <div id="color-chooser-and-btn"></div>
+    </div>
+  </div>
+  <script>
+    // Parse URL parameters
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    const productName = getQueryParam('product') || 'Product';
+    document.getElementById('product-name').textContent = productName;
+    document.getElementById('product-price').textContent = getQueryParam('price') || '';
+    const img1 = getQueryParam('img1') || '';
+    const img2 = getQueryParam('img2') || '';
+    const img3 = getQueryParam('img3') || '';
+    const initialQuantity = parseInt(getQueryParam('quantity')) || 1;
+
+    document.getElementById('product-img').src = img1;
+    document.getElementById('product-img').alt = productName || 'Product image';
+
+    // Product info dynamic text
+    const productInfo = getQueryParam('info') || 'No product info available.';
+    document.getElementById('product-info-text').textContent = productInfo;
+
+    // Initialize quantity display
+    let currentQuantity = initialQuantity;
+    document.getElementById('product-quantity-display').textContent = currentQuantity;
+
+    // Thumbnails logic: use the three images from URL params
+    const thumbnails = [img1, img2, img3].filter(Boolean);
+    const thumbContainer = document.getElementById('product-thumbnails');
+    thumbContainer.innerHTML = '';
+    thumbnails.forEach((src, idx) => {
+      const img = document.createElement('img');
+      img.className = 'thumb-img';
+      img.src = src;
+      img.alt = 'Thumbnail ' + (idx+1);
+      img.style = 'width:60px;height:60px;object-fit:cover;border-radius:7px;cursor:pointer;border:2px solid #23272f;transition:border 0.2s;';
+      if (src === img1) img.style.border = '2px solid #4f8cff';
+      img.addEventListener('click', function() {
+        document.getElementById('product-img').src = this.src;
+        document.querySelectorAll('.thumb-img').forEach(t => t.style.border = '2px solid #23272f');
+        this.style.border = '2px solid #4f8cff';
+      });
+      thumbContainer.appendChild(img);
+    });
+
+    // Quantity logic
+    document.getElementById('product-minus-btn').addEventListener('click', () => {
+      if (currentQuantity > 1) {
+        currentQuantity--;
+        document.getElementById('product-quantity-display').textContent = currentQuantity;
+      }
+    });
+    document.getElementById('product-plus-btn').addEventListener('click', () => {
+      currentQuantity++;
+      document.getElementById('product-quantity-display').textContent = currentQuantity;
+    });
+    
+    // Add hover effects for quantity buttons
+    document.getElementById('product-minus-btn').addEventListener('mouseenter', function() {
+      this.style.background = '#4f8cff';
+      this.style.color = '#fff';
+    });
+    document.getElementById('product-minus-btn').addEventListener('mouseleave', function() {
+      this.style.background = '#23272f';
+      this.style.color = '#4f8cff';
+    });
+    document.getElementById('product-plus-btn').addEventListener('mouseenter', function() {
+      this.style.background = '#4f8cff';
+      this.style.color = '#fff';
+    });
+    document.getElementById('product-plus-btn').addEventListener('mouseleave', function() {
+      this.style.background = '#23272f';
+      this.style.color = '#4f8cff';
+    });
+
+    // Color chooser logic
+    function createColorSelect(id, label) {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', id);
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = label;
+      const selectElem = document.createElement('select');
+      selectElem.id = id;
+      selectElem.style.padding = '0.5rem 1rem';
+      selectElem.style.borderRadius = '6px';
+      selectElem.style.border = '1px solid #4f8cff';
+      selectElem.style.background = '#181a1b';
+      selectElem.style.color = '#f1f1f1';
+      selectElem.style.fontSize = '1rem';
+      [
+        {value:'black',text:'Black'},
+        {value:'white',text:'White'},
+        {value:'red',text:'Red'},
+        {value:'blue',text:'Blue'},
+        {value:'green',text:'Green'},
+        {value:'yellow',text:'Yellow'}
+      ].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        selectElem.appendChild(option);
+      });
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(selectElem);
+      return wrapper;
+    }
+    function createSpotifyInput() {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      wrapper.style.marginTop = '0.7rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', 'spotify-link-input');
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = 'Spotify song or playlist link:';
+      const inputElem = document.createElement('input');
+      inputElem.id = 'spotify-link-input';
+      inputElem.type = 'text';
+      inputElem.placeholder = 'Paste Spotify link here';
+      inputElem.style.padding = '0.5rem 1rem';
+      inputElem.style.borderRadius = '6px';
+      inputElem.style.border = '1px solid #4f8cff';
+      inputElem.style.background = '#181a1b';
+      inputElem.style.color = '#f1f1f1';
+      inputElem.style.fontSize = '1rem';
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(inputElem);
+      return wrapper;
+    }
+    function createBatteryTypeSelect() {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', 'battery-type-select');
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = 'Battery Type:';
+      const selectElem = document.createElement('select');
+      selectElem.id = 'battery-type-select';
+      selectElem.style.padding = '0.5rem 1rem';
+      selectElem.style.borderRadius = '6px';
+      selectElem.style.border = '1px solid #4f8cff';
+      selectElem.style.background = '#181a1b';
+      selectElem.style.color = '#f1f1f1';
+      selectElem.style.fontSize = '1rem';
+      ['AA', 'AAA'].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        selectElem.appendChild(option);
+      });
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(selectElem);
+      return wrapper;
+    }
+    // Place color chooser(s), Spotify input, and checkout button in the right column
+    const colorChooserAndBtn = document.getElementById('color-chooser-and-btn');
+    colorChooserAndBtn.innerHTML = '';
+    const colorChooserContainer = document.createElement('div');
+    colorChooserContainer.style.display = 'flex';
+    colorChooserContainer.style.flexDirection = 'column';
+    colorChooserContainer.style.gap = '1.1rem';
+    if (productName.trim().toLowerCase() === 'spotify sleutelhanger') {
+      colorChooserContainer.appendChild(createColorSelect('text-color-select', 'Text color:'));
+      colorChooserContainer.appendChild(createColorSelect('base-color-select', 'Base color:'));
+      colorChooserContainer.appendChild(createSpotifyInput());
+    } else if (productName.trim().toLowerCase() === 'piramide') {
+      colorChooserContainer.appendChild(createColorSelect('outer-color-select', 'Outer:'));
+      colorChooserContainer.appendChild(createColorSelect('inner-color-select', 'Inner:'));
+    } else if (productName.trim().toLowerCase() === 'middle finger lighter') {
+      colorChooserContainer.appendChild(createColorSelect('box-color-select', 'Box Color:'));
+      colorChooserContainer.appendChild(createColorSelect('finger-color-select', 'Finger Color:'));
+    } else if (productName.trim().toLowerCase() === 'battery dispenser') {
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+      colorChooserContainer.appendChild(createBatteryTypeSelect());
+    } else {
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+    }
+    colorChooserAndBtn.appendChild(colorChooserContainer);
+    // Add checkout button below choosers
+    const checkoutBtn = document.createElement('button');
+    checkoutBtn.id = 'continue-checkout-btn';
+    checkoutBtn.textContent = 'Continue to Checkout';
+    checkoutBtn.style.alignSelf = 'stretch';
+    checkoutBtn.style.background = '#4f8cff';
+    checkoutBtn.style.color = '#fff';
+    checkoutBtn.style.border = 'none';
+    checkoutBtn.style.borderRadius = '8px';
+    checkoutBtn.style.padding = '1rem 1.5rem';
+    checkoutBtn.style.fontSize = '1.1rem';
+    checkoutBtn.style.fontWeight = '600';
+    checkoutBtn.style.cursor = 'pointer';
+    checkoutBtn.style.transition = 'background 0.2s';
+    checkoutBtn.style.marginTop = '10rem';
+    colorChooserAndBtn.appendChild(checkoutBtn);
+
+    // Checkout button logic
+    checkoutBtn.addEventListener('click', function() {
+      const params = new URLSearchParams();
+      params.set('product', productName);
+      params.set('price', getQueryParam('price') || '');
+      params.set('img', document.getElementById('product-img').src);
+      params.set('quantity', currentQuantity); // Add quantity to parameters
+      if (productName.trim().toLowerCase() === 'spotify sleutelhanger') {
+        params.set('textColor', document.getElementById('text-color-select').value);
+        params.set('baseColor', document.getElementById('base-color-select').value);
+        params.set('spotify', document.getElementById('spotify-link-input').value);
+      } else if (productName.trim().toLowerCase() === 'piramide') {
+        params.set('outerColor', document.getElementById('outer-color-select').value);
+        params.set('innerColor', document.getElementById('inner-color-select').value);
+      } else if (productName.trim().toLowerCase() === 'middle finger lighter') {
+        params.set('boxColor', document.getElementById('box-color-select').value);
+        params.set('fingerColor', document.getElementById('finger-color-select').value);
+      } else if (productName.trim().toLowerCase() === 'battery dispenser') {
+        params.set('color', document.getElementById('color-select').value);
+        params.set('batteryType', document.getElementById('battery-type-select').value);
+      } else {
+        params.set('color', document.getElementById('color-select').value);
+      }
+      window.location.href = 'checkout.html?' + params.toString();
+    });
+  </script>
+</body>
+</html> 
