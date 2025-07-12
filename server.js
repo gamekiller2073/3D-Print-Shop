@@ -20,8 +20,10 @@ app.post('/create-checkout-session', async (req, res) => {
   } else {
     priceNumber = price;
   }
-  const amount = Math.round(priceNumber * 100);
   const quantityNum = parseInt(quantity) || 1;
+  // Calculate unit price (total price divided by quantity)
+  const unitPrice = priceNumber / quantityNum;
+  const amount = Math.round(unitPrice * 100);
 
   // Compose description based on product
   let description = `Qty: ${quantityNum} | `;
