@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .checkout-container {
+      max-width: 520px;
+      margin: 4rem auto 0 auto;
+      background: #23272f;
+      border-radius: 14px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+      padding: 2.5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #f1f1f1;
+    }
+    .checkout-container img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+      background: #181a1b;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .checkout-container h2 {
+      margin: 0 0 0.7rem 0;
+      font-size: 2rem;
+      color: #4f8cff;
+      font-weight: 700;
+      text-align: center;
+    }
+    .checkout-container .price {
+      color: #4f8cff;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    .checkout-info-row {
+      width: 100%;
+      margin-bottom: 0.8rem;
+      font-size: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .checkout-label {
+      color: #b3b3b3;
+      font-weight: 500;
+      font-size: 1.22rem;
+    }
+    .spotify-link {
+      color: #1db954;
+      word-break: break-all;
+      text-decoration: underline;
+    }
+    .back-btn {
+      margin-top: 2rem;
+      background: #23272f;
+      color: #4f8cff;
+      border: 2px solid #4f8cff;
+      border-radius: 6px;
+      padding: 0.6rem 1.3rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .back-btn:hover {
+      background: #4f8cff;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout-container">
+    <!-- Removed product image -->
+    <div style="width:100%;background:#181a1b;border-radius:10px;padding:1.2rem 1.1rem;margin-bottom:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.13);display:flex;flex-direction:column;gap:0.7rem;">
+      <div class="checkout-info-row" style="margin-bottom:0;">
+        <span class="checkout-label">Product Name:</span>
+        <span id="checkout-product" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+      </div>
+      <div class="checkout-info-row" style="margin-bottom:0;">
+        <span class="checkout-label">Product Price:</span>
+        <span id="checkout-price" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+      </div>
+      <div class="checkout-info-row" style="margin-bottom:0;">
+        <span class="checkout-label">Quantity:</span>
+        <span id="checkout-quantity" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+      </div>
+      <div class="checkout-info-row" style="margin-bottom:0;">
+        <span class="checkout-label">Total Price:</span>
+        <span id="checkout-total-price" style="text-align:right;font-weight:600;font-size:1.22rem;color:#4f8cff;"></span>
+      </div>
+      <div class="checkout-info-row" style="margin-bottom:0;" id="checkout-color-row">
+        <span class="checkout-label">Product Color:</span>
+        <span id="checkout-color" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+          </div>
+      <div class="checkout-info-row" id="checkout-outer-color-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Outer Color:</span>
+        <span id="checkout-outer-color" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+      </div>
+      <div class="checkout-info-row" id="checkout-inner-color-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Inner Color:</span>
+        <span id="checkout-inner-color" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+      </div>
+      <div class="checkout-info-row" id="checkout-text-color-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Text Color:</span>
+        <span id="checkout-text-color" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+          </div>
+      <div class="checkout-info-row" id="checkout-base-color-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Base Color:</span>
+        <span id="checkout-base-color" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+            </div>
+      <div class="checkout-info-row" id="checkout-battery-type-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Battery Type:</span>
+        <span id="checkout-battery-type" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+            </div>
+      <div class="checkout-info-row" id="checkout-spotify-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Spotify:</span>
+        <a id="checkout-spotify" class="spotify-link" href="#" target="_blank" style="text-align:right;font-weight:600;font-size:1.22rem;"></a>
+            </div>
+      <div class="checkout-info-row" id="checkout-box-color-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Box Color:</span>
+        <span id="checkout-box-color" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+            </div>
+      <div class="checkout-info-row" id="checkout-finger-color-row" style="display:none;margin-bottom:0;">
+        <span class="checkout-label">Finger Color:</span>
+        <span id="checkout-finger-color" style="text-align:right;font-weight:600;font-size:1.22rem;"></span>
+      </div>
+    </div>
+    <form id="checkout-form" style="width:100%;margin-top:2.2rem;display:flex;flex-direction:column;gap:1.2rem;">
+      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+        <label for="full-name" style="color:#f1f1f1;font-size:1.05rem;">Full Name:</label>
+        <input type="text" id="full-name" name="full-name" required style="padding:0.6rem 1rem;border-radius:6px;border:1px solid #4f8cff;background:#181a1b;color:#f1f1f1;font-size:1rem;">
+          </div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+        <label for="email" style="color:#f1f1f1;font-size:1.05rem;">Email:</label>
+        <input type="email" id="email" name="email" required style="padding:0.6rem 1rem;border-radius:6px;border:1px solid #4f8cff;background:#181a1b;color:#f1f1f1;font-size:1rem;">
+          </div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+        <label for="address" style="color:#f1f1f1;font-size:1.05rem;">Address:</label>
+        <textarea id="address" name="address" required rows="2" style="padding:0.6rem 1rem;border-radius:6px;border:1px solid #4f8cff;background:#181a1b;color:#f1f1f1;font-size:1rem;"></textarea>
+          </div>
+      <button type="submit" id="submit-btn" style="margin-top:2.2rem;background:#4f8cff;color:#fff;border:none;border-radius:8px;padding:1rem 1.5rem;font-size:1.1rem;font-weight:600;cursor:pointer;transition:background 0.2s;">Pay</button>
+        </form>
+    <a href="index.html" class="back-btn">&#8592; Back to Shop</a>
+    </div>
+  <script>
+    function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    document.getElementById('checkout-product').textContent = getQueryParam('product') || 'Product';
+    document.getElementById('checkout-price').textContent = getQueryParam('price') || '';
+    document.getElementById('checkout-quantity').textContent = getQueryParam('quantity') || '1';
+    
+    // Calculate total price
+    const priceStr = getQueryParam('price') || '€ 0';
+    const quantity = parseInt(getQueryParam('quantity')) || 1;
+    const priceValue = parseFloat(priceStr.replace('€ ', '').replace(',', '.'));
+    const totalPrice = (priceValue * quantity).toFixed(2).replace('.', ',');
+    document.getElementById('checkout-total-price').textContent = `€ ${totalPrice}`;
+    // Color logic
+    const color = getQueryParam('color');
+    const textColor = getQueryParam('textColor');
+    const baseColor = getQueryParam('baseColor');
+    const outerColor = getQueryParam('outerColor');
+    const innerColor = getQueryParam('innerColor');
+    const boxColor = getQueryParam('boxColor');
+    const fingerColor = getQueryParam('fingerColor');
+    const batteryType = getQueryParam('batteryType');
+    if (textColor || baseColor) {
+      document.getElementById('checkout-color-row').style.display = 'none';
+      if (textColor) {
+        document.getElementById('checkout-text-color-row').style.display = '';
+        document.getElementById('checkout-text-color').textContent = textColor;
+      }
+      if (baseColor) {
+        document.getElementById('checkout-base-color-row').style.display = '';
+        document.getElementById('checkout-base-color').textContent = baseColor;
+      }
+    } else if (outerColor || innerColor) {
+      document.getElementById('checkout-color-row').style.display = 'none';
+      if (outerColor) {
+        document.getElementById('checkout-outer-color-row').style.display = '';
+        document.getElementById('checkout-outer-color').textContent = outerColor;
+    }
+      if (innerColor) {
+        document.getElementById('checkout-inner-color-row').style.display = '';
+        document.getElementById('checkout-inner-color').textContent = innerColor;
+      }
+    } else if (boxColor || fingerColor) {
+      document.getElementById('checkout-color-row').style.display = 'none';
+      if (boxColor) {
+        document.getElementById('checkout-box-color-row').style.display = '';
+        document.getElementById('checkout-box-color').textContent = boxColor;
+        }
+      if (fingerColor) {
+        document.getElementById('checkout-finger-color-row').style.display = '';
+        document.getElementById('checkout-finger-color').textContent = fingerColor;
+      }
+    } else if (batteryType) {
+      document.getElementById('checkout-color-row').style.display = '';
+      document.getElementById('checkout-battery-type-row').style.display = '';
+      document.getElementById('checkout-battery-type').textContent = batteryType;
+      if (color) {
+        document.getElementById('checkout-color').textContent = color;
+      } else {
+        document.getElementById('checkout-color').textContent = '-';
+      }
+    } else if (color) {
+      document.getElementById('checkout-color-row').style.display = '';
+      document.getElementById('checkout-color').textContent = color;
+    } else {
+      document.getElementById('checkout-color-row').style.display = '';
+      document.getElementById('checkout-color').textContent = '-';
+    }
+    // Spotify logic
+    const spotify = getQueryParam('spotify');
+    if (spotify) {
+      document.getElementById('checkout-spotify-row').style.display = '';
+      document.getElementById('checkout-spotify').textContent = spotify;
+      document.getElementById('checkout-spotify').href = spotify;
+    }
+  </script>
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS with your public key
+    emailjs.init('y7LqCrsi8J-atkUez');
+  </script>
+  <script>
+    const checkoutForm = document.getElementById('checkout-form');
+    const submitBtn = document.getElementById('submit-btn');
+    checkoutForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Redirecting...';
+      // Gather product info from DOM/URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const product = document.getElementById('checkout-product').textContent;
+      const price = document.getElementById('checkout-price').textContent;
+      const quantity = document.getElementById('checkout-quantity').textContent;
+      const totalPrice = document.getElementById('checkout-total-price').textContent;
+      const color = document.getElementById('checkout-color') ? document.getElementById('checkout-color').textContent : '';
+      const textColor = document.getElementById('checkout-text-color') ? document.getElementById('checkout-text-color').textContent : '';
+      const baseColor = document.getElementById('checkout-base-color') ? document.getElementById('checkout-base-color').textContent : '';
+      const outerColor = document.getElementById('checkout-outer-color') ? document.getElementById('checkout-outer-color').textContent : '';
+      const innerColor = document.getElementById('checkout-inner-color') ? document.getElementById('checkout-inner-color').textContent : '';
+      const boxColor = document.getElementById('checkout-box-color') ? document.getElementById('checkout-box-color').textContent : '';
+      const fingerColor = document.getElementById('checkout-finger-color') ? document.getElementById('checkout-finger-color').textContent : '';
+      const batteryType = document.getElementById('checkout-battery-type') ? document.getElementById('checkout-battery-type').textContent : '';
+      const spotify = urlParams.get('spotify') || '';
+      // Gather form info
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const fullName = document.getElementById('full-name').value;
+      // Send order email via EmailJS
+      try {
+        await emailjs.send('service_we3cm9f', 'template_bubq4ev', {
+          product,
+          price,
+          quantity,
+          totalPrice,
+          color,
+          textColor,
+          baseColor,
+          outerColor,
+          innerColor,
+          boxColor,
+          fingerColor,
+          batteryType,
+          spotify,
+          email,
+          address,
+          fullName
+        });
+      } catch (err) {
+        alert('Order email could not be sent, but you will still be redirected to payment.');
+      }
+      // Send to backend
+      try {
+        const response = await fetch('https://threed-print-shop-xhew.onrender.com/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            product, price: totalPrice, quantity, color, textColor, baseColor, outerColor, innerColor, boxColor, fingerColor, batteryType, spotify, email, address, fullName
+          })
+        });
+        const data = await response.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert('Error: ' + (data.error || 'Could not create Stripe session.'));
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Pay';
+        }
+      } catch (err) {
+        alert('Network error: ' + err.message);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Pay';
+      }
+    });
+  </script>
+</body>
+</html> 
