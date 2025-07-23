@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Print Shop</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://js.stripe.com/v3/"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <header class="main-banner">
+    <nav class="navbar">
+      <div class="nav-content">
+        <!-- Removed Login button -->
+      </div>
+    </nav>
+    <h1>3D Print Shop</h1>
+    <a href="#products" class="scroll-down">&#8595;</a>
+  </header>
+  <main id="products" class="product-gallery">
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US83ca3099960453/design/2025-02-04_61223c6c8e44f.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://i.postimg.cc/jq9tbSZt/Whats-App-Image-2025-07-12-at-14-51-53-1.jpg" data-img3="https://i.postimg.cc/7hpkMKff/Whats-App-Image-2025-07-12-at-14-51-53.jpg" data-info="Cable winder for organizing your cables.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US83ca3099960453/design/2025-02-04_61223c6c8e44f.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Cable winder">
+      <h3>Cable winder</h3>
+      <p class="price">€ 4,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://i.postimg.cc/vB5Y2Fw5/Whats-App-Image-2025-07-04-at-18-15-41.jpg" data-img2="https://i.postimg.cc/dtjFTjJt/Whats-App-Image-2025-07-12-at-14-51-50.jpg" data-img3="https://i.postimg.cc/nV7pnt5m/Whats-App-Image-2025-07-12-at-15-00-59.jpg" data-info="A keychain with a song or playlist as a code.">
+      <img src="https://i.postimg.cc/vB5Y2Fw5/Whats-App-Image-2025-07-04-at-18-15-41.jpg" alt="Spotify sleutelhanger">
+      <h3>Spotify sleutelhanger</h3>
+      <p class="price">€ 1,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USe70beec40fbfef/design/2024-10-26_a7eb84f50f33e.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://i.postimg.cc/fLcmhPhh/Whats-App-Image-2025-07-12-at-14-51-51.jpg" data-img3="https://i.postimg.cc/mDfCJsJw/Whats-App-Image-2025-07-12-at-15-28-17.jpg" data-info="A corn-shaped fidget toy to hang onto your keys.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USe70beec40fbfef/design/2024-10-26_a7eb84f50f33e.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Corn fidget toy">
+      <h3>Corn fidget toy</h3>
+      <p class="price">€ 1,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US665435f5e4b3f3/design/2025-06-27_eb4c46f92539f.jpeg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://i.postimg.cc/JzZFS1d6/Whats-App-Image-2025-07-12-at-14-51-53-1.jpg" data-img3="https://i.postimg.cc/rp9PFfT5/Whats-App-Image-2025-07-12-at-14-51-53.jpg" data-info="A CR2032 battery holder for storing batteries.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US665435f5e4b3f3/design/2025-06-27_eb4c46f92539f.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="CR2032 batterij houder">
+      <h3>CR2032 batterij houder</h3>
+      <p class="price">€ 2,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USc00c424239e415/design/2024-10-14_8dfa58301ea6c.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USc00c424239e415/design/2024-10-14_53a6fd2b38791.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US2a5f36355dd8ed/design/2025-06-23_b8b27d4f0b1a58.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A pyramid-shaped fidget toy for stress relief.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USc00c424239e415/design/2024-10-14_8dfa58301ea6c.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Piramide">
+      <h3>Piramide</h3>
+      <p class="price">€ 1,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USf13836cf7ffb4f/design/2025-02-18_f5d304c518aff.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://i.postimg.cc/KzNJxjnf/Whats-App-Image-2025-07-12-at-15-42-50-1.jpg" data-img3="https://i.postimg.cc/Y9kb5Ymj/Whats-App-Image-2025-07-12-at-15-42-50.jpg" data-info="A mini Batman figurine.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USf13836cf7ffb4f/design/2025-02-18_f5d304c518aff.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Mini Batman figurine">
+      <h3>Mini Batman figurine</h3>
+      <p class="price">€ 3,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USf9a81f6a074f33/design/2025-03-05_874d89e2c2927.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USf9a81f6a074f33/design/2025-03-05_5a64f74fb394a.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USf9a81f6a074f33/design/2025-03-05_bb1c9650c4184.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A lighter with a middle finger shaped flame for your friends.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USf9a81f6a074f33/design/2025-03-05_874d89e2c2927.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Middle Finger Lighter">
+      <h3>Middle Finger Lighter</h3>
+      <p class="price">€ 2,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US5a803f09f45d8a/design/2024-09-30_0b3f7978fb873.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US5a803f09f45d8a/design/2024-09-30_0b3f7978fb873.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US5a803f09f45d8a/design/2024-09-30_0b3f7978fb873.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A battery dispenser for your devices.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US5a803f09f45d8a/design/2024-09-30_0b3f7978fb873.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Battery Dispenser">
+      <h3>Battery Dispenser</h3>
+      <p class="price">€ 6,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US33a88ac0787afd/design/2024-07-25_fec53fa0baa3a.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US33a88ac0787afd/design/2024-07-25_fec53fa0baa3a.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US33a88ac0787afd/design/2024-07-25_fec53fa0baa3a.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A fidget toy with a click sound.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US33a88ac0787afd/design/2024-07-25_fec53fa0baa3a.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Gear Click Fidget">
+      <h3>Gear Click Fidget</h3>
+      <p class="price">€ 1,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USca27180a4f2e3b/design/2024-05-17_b3d0b6e33a413.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USca27180a4f2e3b/design/2024-05-17_b3d0b6e33a413.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USca27180a4f2e3b/design/2024-05-17_b3d0b6e33a413.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A toggle switch for your fidget toys.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USca27180a4f2e3b/design/2024-05-17_b3d0b6e33a413.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Fidget toggle switch">
+      <h3>Fidget toggle switch</h3>
+      <p class="price">€ 1,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US6da26f5ab87223/design/2025-04-16_3fa225de127c3.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US6da26f5ab87223/design/2025-04-16_3fa225de127c3.png?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US6da26f5ab87223/design/2025-04-16_3fa225de127c3.png?x-oss-process=image/resize,w_1000/format,webp" data-info="A spinning fidget keychain for your keys.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US6da26f5ab87223/design/2025-04-16_3fa225de127c3.png?x-oss-process=image/resize,w_1000/format,webp" alt="Spinning fidget keychain">
+      <h3>Spinning fidget keychain</h3>
+      <p class="price">€ 1,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://i.postimg.cc/VL9QYrQQ/Whats-App-Image-2025-07-17-at-18-48-44.jpg" data-img2="https://i.postimg.cc/1z3Z79dx/Whats-App-Image-2025-07-17-at-18-47-25-2.jpg" data-img3="https://i.postimg.cc/RF3x9g9X/Whats-App-Image-2025-07-17-at-18-47-26.jpg" data-info="An octopus keychain with the head of Dwayne 'The Rock' Johnson.">
+      <img src="https://i.postimg.cc/VL9QYrQQ/Whats-App-Image-2025-07-17-at-18-48-44.jpg" alt="The Rocktopus">
+      <h3>The Rocktopus</h3>
+      <p class="price">€ 0,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://i.postimg.cc/fym4SkVd/Whats-App-Image-2025-07-17-at-18-47-28.jpg" data-img2="https://i.postimg.cc/yYCC4hGy/Whats-App-Image-2025-07-17-at-18-48-44-2.jpg" data-img3="https://i.postimg.cc/vBpFm5ZM/Whats-App-Image-2025-07-17-at-18-47-28-1.jpg" data-info="A dragon with a flexible tail.">
+      <img src="https://i.postimg.cc/fym4SkVd/Whats-App-Image-2025-07-17-at-18-47-28.jpg" alt="Flexi Dragon">
+      <h3>Flexi Dragon</h3>
+      <p class="price">€ 3,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://i.postimg.cc/dQycxN50/Whats-App-Image-2025-07-17-at-18-48-44-1.jpg" data-img2="https://i.postimg.cc/wjHzJ5cj/Whats-App-Image-2025-07-17-at-18-47-25.jpg" data-img3="https://i.postimg.cc/MpDSYcdb/Whats-App-Image-2025-07-17-at-18-47-25-1.jpg" data-info="A cube with a flexible grid.">
+      <img src="https://i.postimg.cc/dQycxN50/Whats-App-Image-2025-07-17-at-18-48-44-1.jpg" alt="Product C">
+      <h3>Flexi Grid</h3>
+      <p class="price">€ 3,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://i.postimg.cc/VLX1dZth/Whats-App-Image-2025-07-17-at-18-47-26-1.jpg" data-img2="https://i.postimg.cc/K8ZX4GxK/Whats-App-Image-2025-07-17-at-18-49-49.jpg" data-img3="https://i.postimg.cc/1z71Lkx8/Whats-App-Image-2025-07-17-at-18-47-27.jpg" data-info="A two stage click fidget.">
+      <img src="https://i.postimg.cc/VLX1dZth/Whats-App-Image-2025-07-17-at-18-47-26-1.jpg" alt="Product D">
+      <h3>2 Stage Click Fidget</h3>
+      <p class="price">€ 1,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" data-info="A stylish 3D printed vase for your home.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" alt="Evergreen Vase">
+      <h3>Evergreen Vase</h3>
+      <p class="price">€ 11,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_7ebd52132579.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_250e44ebd578d.png?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_c08c72240d129.png?x-oss-process=image/resize,w_1000/format,webp" data-info="A stylish Japandi-inspired 3D printed vase. Size of the big one: 110mm x 110mm x 180mm. Size of the small one: 86mm x 86mm x 115mm.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_7ebd52132579.png?x-oss-process=image/resize,w_1000/format,webp" alt="Japandi Vase">
+      <h3>Japandi Vase</h3>
+      <p class="price">€ 12,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/design/2023-12-05_44807718a6b6c.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/195690352/instance/2025-01-06_b9ff921d06f1c.jpeg?x-oss-process=image%2Fresize%2Cw_300%2Fformat%2Cwebp" data-img3="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/109706139/instance/2024-08-11_0f96ed5c9a155.jpg?x-oss-process=image%2Fresize%2Cw_300%2Fformat%2Cwebp" data-info="A modern spiral 3D printed vase.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/design/2023-12-05_44807718a6b6c.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Spiral Vase">
+      <h3>Spiral Vase</h3>
+      <p class="price">€ 9,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_9c51993a4acc2.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_b32d650d17a39.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_ff5f6160eb07d.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A unique strata-patterned 3D printed vase.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_9c51993a4acc2.png?x-oss-process=image/resize,w_1000/format,webp" alt="Strata Vase">
+      <h3>Strata Vase</h3>
+      <p class="price">€ 12,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/design/2023-09-22_d65b322d08f15.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/265948516/instance/2025-04-02_aa56b643d0f6f8.jpeg?x-oss-process=image%2Fresize%2Cw_300%2Fformat%2Cwebp" data-img3="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/design/2023-09-22_d65b322d08f15.png?x-oss-process=image/resize,w_1000/format,webp" data-info="A mid-century modern (MCM) style 3D printed vase.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/design/2023-09-22_d65b322d08f15.png?x-oss-process=image/resize,w_1000/format,webp" alt="MCM Vase">
+      <h3>MCM Vase</h3>
+      <p class="price">€ 11,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_d9d5f19a37994.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_4675f39b6f3fa.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_d9d5f19a37994.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A wavy 3D printed vase for a modern look.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_d9d5f19a37994.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Wave Vase">
+      <h3>Wave Vase</h3>
+      <p class="price">€ 15,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US77c76b308cc562/design/2025-02-18_708693ed9ac99.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US77c76b308cc562/design/2025-02-18_d593e1718aae9.png?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US77c76b308cc562/design/2025-02-18_013077481a62a.png?x-oss-process=image/resize,w_1000/format,webp" data-info="A customizable keychain with your chosen name.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US77c76b308cc562/design/2025-02-18_708693ed9ac99.png?x-oss-process=image/resize,w_1000/format,webp" alt="Name Keychain">
+      <h3>Name Keychain</h3>
+      <p class="price">€ 3,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US89152b52c20c3/design/2024-04-29_12b6334ebf03b.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US89152b52c20c3/design/2024-04-29_f3b6949d8249d.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US89152b52c20c3/design/2024-05-01_1b4d4f2744963.png?x-oss-process=image/resize,w_1000/format,webp" data-info="A sturdy wall mount for your guitar. Choose electric or acoustic.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US89152b52c20c3/design/2024-04-29_12b6334ebf03b.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Guitar Wall Mount">
+      <h3>Guitar Wall Mount</h3>
+      <p class="price">€ 3,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USc56255d09d3b66/design/2025-05-21_4350e5f04be7d8.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USc56255d09d3b66/design/2025-05-21_81e0d5971f63b8.png?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USc56255d09d3b66/design/2025-05-21_4350e5f04be7d8.png?x-oss-process=image/resize,w_1000/format,webp" data-info="A stylish stand for your speed cube. Keeps your cube on display and ready to grab.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USc56255d09d3b66/design/2025-05-21_4350e5f04be7d8.png?x-oss-process=image/resize,w_1000/format,webp" alt="Speed Cube Stand">
+      <h3>Speed Cube Stand</h3>
+      <p class="price">€ 1,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US8be94f3b1c0a27/design/2024-10-13_699d0a3dd189d.jpeg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US8be94f3b1c0a27/design/2024-10-13_d0c24bbffdbfe.jpeg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US8be94f3b1c0a27/design/2024-10-13_31d089111f281.jpeg?x-oss-process=image/resize,w_1000/format,webp" data-info="An elegant stand for your favorite cube. Perfect for display at home or office.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US8be94f3b1c0a27/design/2024-10-13_699d0a3dd189d.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Elegant Cube Stand">
+      <h3>Elegant Cube Stand</h3>
+      <p class="price">€ 1,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US592e67c86ca2e9/design/2024-11-20_88748f6851ccd.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US592e67c86ca2e9/design/2024-11-20_52c5bb2b78caa.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US592e67c86ca2e9/design/2024-11-20_74bc0f7fa5953.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="A 3D-printed pen holder and card hoder with a motorblock design.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US592e67c86ca2e9/design/2024-11-20_88748f6851ccd.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Motorblock Pen Holder">
+      <h3>Motorblock Pen Holder</h3>
+      <p class="price">€ 4,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+    <div class="product-card request-card">
+      <div class="request-inner">
+        <div class="request-circle">
+          <span class="request-plus">+</span>
+        </div>
+      </div>
+      <h3 style="margin-top:1rem; color:#4f8cff;">Request</h3>
+      <button class="buy-btn" id="open-request-modal">Request a Product</button>
+    </div>
+    <!-- Request Modal -->
+    <div id="request-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-request-modal">&times;</span>
+        <h2>Request a Product</h2>
+        <form id="request-form">
+          <label for="request-name">Name:</label>
+          <input type="text" id="request-name" name="name" required>
+          <label for="request-email">E-mail:</label>
+          <input type="email" id="request-email" name="email" required>
+          <label for="request-message">Request:</label>
+          <textarea id="request-message" name="message" rows="5" required></textarea>
+          <div style="display:flex; gap:1rem; margin-top:1.2rem;">
+            <button type="button" class="buy-btn" id="cancel-request-modal" style="background:#23272f; color:#4f8cff; border:2px solid #4f8cff;">Cancel</button>
+            <button type="submit" class="buy-btn">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer style="background:#23272f; color:#f1f1f1; text-align:center; padding:2rem 1rem 1.5rem 1rem; font-size:1.05rem; margin-top:2rem;">
+    <div style="max-width:600px; margin:0 auto;">
+      <strong>About:</strong><br>
+      E-mail: <a href="mailto:toon.rotte999@gmail.com" style="color:#4f8cff; text-decoration:none;">toon.rotte999@gmail.com</a><br>
+      Nummer: +32 480 63 11 51<br>
+      Snapchat: lag22421<br>
+      Instagram: <a href="https://instagram.com/toon_rotte" target="_blank" style="color:#4f8cff; text-decoration:none;">toon_rotte</a>
+    </div>
+  </footer>
+  <script>
+    // Initialize Stripe and EmailJS
+    const stripe = Stripe('pk_live_51RhEGyAUikPASWrhSIJC9JwDohwQc0SnYmiWYIXlvm8XnqNNLpBlJykIi8A0ulgecCDXl3nVLfIoO9sLRQ17IkPp00VFiODP5r');
+    emailjs.init('y7LqCrsi8J-atkUez');
+    
+    // Create Stripe Elements
+    const elements = stripe.elements();
+    let cardElement = null;
+    
+    document.querySelectorAll('.buy-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Get product details
+        var productCard = this.closest('.product-card');
+        var productName = productCard.querySelector('h3').textContent;
+        var productPrice = productCard.querySelector('.price').textContent;
+        var productImg1 = productCard.getAttribute('data-img1');
+        var productImg2 = productCard.getAttribute('data-img2');
+        var productImg3 = productCard.getAttribute('data-img3');
+        var productInfo = productCard.getAttribute('data-info');
+        // Default quantity is 1 since there are no quantity controls on homepage
+        var quantity = '1';
+        // Redirect to product detail page with all image URLs, info, and quantity
+        window.location.href = `product.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}&img1=${encodeURIComponent(productImg1)}&img2=${encodeURIComponent(productImg2)}&img3=${encodeURIComponent(productImg3)}&info=${encodeURIComponent(productInfo)}&quantity=${encodeURIComponent(quantity)}`;
+      });
+    });
+    
+    // Fade-in animation for product cards on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.product-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Modal logic for request form
+    const openModalBtn = document.getElementById('open-request-modal');
+    const modal = document.getElementById('request-modal');
+    const closeModalBtn = document.getElementById('close-request-modal');
+    const cancelModalBtn = document.getElementById('cancel-request-modal');
+    openModalBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.classList.add('show');
+    });
+    closeModalBtn.addEventListener('click', function() {
+      modal.classList.remove('show');
+    });
+    cancelModalBtn.addEventListener('click', function() {
+      modal.classList.remove('show');
+    });
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.classList.remove('show');
+      }
+    });
+
+    // EmailJS form submission for request modal
+    document.getElementById('request-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      emailjs.sendForm(
+        'service_jm1gooc',    // TODO: Replace with your EmailJS service ID
+        'template_ehns0ki',   // TODO: Replace with your EmailJS template ID
+        this,
+        'y7LqCrsi8J-atkUez'   // Your public key
+      ).then(function(response) {
+          alert('Request sent successfully!');
+          
+          modal.classList.remove('show');
+          document.getElementById('request-form').reset();
+        }, function(error) {
+          alert('Failed to send request. Please try again.');
+        });
+    });
+  </script>
+</body>
+</html> 
