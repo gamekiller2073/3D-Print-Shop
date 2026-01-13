@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .product-detail-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 800px;
+      margin: 4rem auto 0 auto;
+      background: #23272f;
+      border-radius: 14px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+      padding: 2.5rem 2rem 2rem 2rem;
+      gap: 2.5rem;
+    }
+    .product-detail-img {
+      flex: 0 0 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-detail-img img {
+      width: 100%;
+      max-width: 340px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #181a1b;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .product-detail-info {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #f1f1f1;
+    }
+    .product-detail-info h2 {
+      margin: 0 0 1.2rem 0;
+      font-size: 2.3rem;
+      color: #4f8cff;
+      font-weight: 700;
+      text-align: left;
+    }
+    .product-detail-info .price {
+      color: #4f8cff;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .back-btn {
+      margin-top: 2rem;
+      background: #23272f;
+      color: #4f8cff;
+      border: 2px solid #4f8cff;
+      border-radius: 6px;
+      padding: 0.6rem 1.3rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      width: fit-content;
+    }
+    .back-btn:hover {
+      background: #4f8cff;
+      color: #fff;
+    }
+    .cart-icon-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .cart-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #23272f;
+      color: #4f8cff;
+      border: 2px solid #4f8cff;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cart-icon:hover {
+      background: #4f8cff;
+      color: #fff;
+    }
+    #cart-count {
+      background: #4f8cff;
+      color: #fff;
+      border-radius: 50%;
+      min-width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .cart-icon:hover #cart-count {
+      background: #fff;
+      color: #4f8cff;
+    }
+    
+    /* Cart Popup Modal */
+    .cart-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .cart-popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .cart-popup {
+      background: #23272f;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      transform: scale(0.8) translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    
+    .cart-popup-overlay.show .cart-popup {
+      transform: scale(1) translateY(0);
+    }
+    
+    .cart-popup h3 {
+      color: #4f8cff;
+      font-size: 1.5rem;
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+    }
+    
+    .cart-popup p {
+      color: #f1f1f1;
+      margin: 0 0 2rem 0;
+      font-size: 1.1rem;
+    }
+    
+    .cart-popup-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .cart-popup-btn {
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .cart-popup-btn.primary {
+      background: #4f8cff;
+      color: #fff;
+    }
+    
+    .cart-popup-btn.primary:hover {
+      background: #3a6bcc;
+    }
+    
+    .cart-popup-btn.secondary {
+      background: transparent;
+      color: #4f8cff;
+      border: 2px solid #4f8cff;
+    }
+    
+    .cart-popup-btn.secondary:hover {
+      background: #4f8cff;
+      color: #fff;
+    }
+    
+    .cart-popup-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #b0b0b0;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    
+    .cart-popup-close:hover {
+      background: #3a4048;
+      color: #f1f1f1;
+    }
+    
+    @media (max-width: 480px) {
+      .cart-popup {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+      
+      .cart-popup h3 {
+        font-size: 1.3rem;
+      }
+      
+      .cart-popup p {
+        font-size: 1rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .product-detail-flex {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0.5rem 1.5rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .product-detail-img {
+        max-width: 100%;
+      }
+      .product-detail-img img {
+        max-width: 100%;
+      }
+      .product-detail-info h2 {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width:800px;margin:3rem auto 0 auto;text-align:left;position:relative;">
+    <a href="index.html" class="back-btn" style="margin-bottom:2rem; position:static; top:auto; left:auto; z-index:auto;">&#8592; Back to Shop</a>
+    
+    <!-- Cart Icon -->
+    <div class="cart-icon-container" style="position:absolute;top:0;right:0;z-index:1000;">
+      <a href="cart.html" class="cart-icon" id="cart-icon">
+        🛒 <span id="cart-count">0</span>
+      </a>
+    </div>
+  </div>
+  <div class="product-detail-flex">
+    <div class="product-detail-img-col" style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+      <img id="product-img" src="" alt="Product image" style="max-width:320px; width:100%; border-radius:12px; object-fit:cover; background:#181a1b; box-shadow:0 2px 16px rgba(0,0,0,0.18);">
+      <div id="product-thumbnails" style="display:flex;gap:0.7rem;justify-content:center;margin-top:1rem;"></div>
+      <div class="product-info-tab" style="margin-top:1.7rem; background:#181a1b; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,0.13); padding:1.2rem 1.1rem; color:#e0e0e0; max-width:340px; width:100%;">
+        <div style="font-weight:600; color:#4f8cff; font-size:1.1rem; margin-bottom:0.7rem;">Product Info</div>
+        <div id="product-info-text">This is a placeholder for product information. You can add a description, material, size, or any other details about the product here.</div>
+      </div>
+    </div>
+    <div class="product-detail-info" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:1.1rem;flex:1;min-width:0;max-width:340px;width:100%;margin-left:2.2rem;">
+      <h2 id="product-name"></h2>
+      <div class="price" id="product-price"></div>
+      <div class="quantity-section" style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.1rem;">
+        <label style="font-size:1.05rem;color:#f1f1f1;">Quantity:</label>
+        <div style="display:flex;align-items:center;gap:0.8rem;">
+          <button class="quantity-btn minus-btn" id="product-minus-btn" style="background:#23272f;color:#4f8cff;border:2px solid #4f8cff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;font-weight:bold;transition:background 0.2s,color 0.2s;">-</button>
+          <span id="product-quantity-display" style="color:#f1f1f1;font-size:1.1rem;font-weight:600;min-width:20px;text-align:center;">1</span>
+          <button class="quantity-btn plus-btn" id="product-plus-btn" style="background:#23272f;color:#4f8cff;border:2px solid #4f8cff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;font-weight:bold;transition:background 0.2s,color 0.2s;">+</button>
+        </div>
+      </div>
+      <div id="color-chooser-and-btn"></div>
+    </div>
+  </div>
+  
+  <!-- Cart Popup Modal -->
+  <div id="cart-popup-overlay" class="cart-popup-overlay">
+    <div class="cart-popup">
+      <button class="cart-popup-close" id="popup-close-btn">&times;</button>
+      <h3>✅ Added to Cart!</h3>
+      <p>Your item has been successfully added to your cart.</p>
+      <div class="cart-popup-buttons">
+        <a href="cart.html" class="cart-popup-btn primary" id="popup-go-to-cart">
+          🛒 Go to Cart
+        </a>
+        <button class="cart-popup-btn secondary" id="popup-keep-shopping">
+          🛍️ Keep Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Parse URL parameters
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    const productName = getQueryParam('product') || 'Product';
+    document.getElementById('product-name').textContent = productName;
+    document.getElementById('product-price').textContent = getQueryParam('price') || '';
+    const img1 = getQueryParam('img1') || '';
+    const img2 = getQueryParam('img2') || '';
+    const img3 = getQueryParam('img3') || '';
+    const initialQuantity = parseInt(getQueryParam('quantity')) || 1;
+
+    document.getElementById('product-img').src = img1;
+    document.getElementById('product-img').alt = productName || 'Product image';
+
+    // Product info dynamic text
+    const productInfo = getQueryParam('info') || 'No product info available.';
+    document.getElementById('product-info-text').textContent = productInfo;
+
+    // Initialize quantity display
+    let currentQuantity = initialQuantity;
+    document.getElementById('product-quantity-display').textContent = currentQuantity;
+
+    // Thumbnails logic: use the three images from URL params
+    const thumbnails = [img1, img2, img3].filter(Boolean);
+    const thumbContainer = document.getElementById('product-thumbnails');
+    thumbContainer.innerHTML = '';
+    thumbnails.forEach((src, idx) => {
+      const img = document.createElement('img');
+      img.className = 'thumb-img';
+      img.src = src;
+      img.alt = 'Thumbnail ' + (idx+1);
+      img.style = 'width:60px;height:60px;object-fit:cover;border-radius:7px;cursor:pointer;border:2px solid #23272f;transition:border 0.2s;';
+      if (src === img1) img.style.border = '2px solid #4f8cff';
+      img.addEventListener('click', function() {
+        document.getElementById('product-img').src = this.src;
+        document.querySelectorAll('.thumb-img').forEach(t => t.style.border = '2px solid #23272f');
+        this.style.border = '2px solid #4f8cff';
+      });
+      thumbContainer.appendChild(img);
+    });
+
+    // Quantity logic
+    document.getElementById('product-minus-btn').addEventListener('click', () => {
+      if (currentQuantity > 1) {
+        currentQuantity--;
+        document.getElementById('product-quantity-display').textContent = currentQuantity;
+      }
+    });
+    document.getElementById('product-plus-btn').addEventListener('click', () => {
+      currentQuantity++;
+      document.getElementById('product-quantity-display').textContent = currentQuantity;
+    });
+    
+    // Add hover effects for quantity buttons
+    document.getElementById('product-minus-btn').addEventListener('mouseenter', function() {
+      this.style.background = '#4f8cff';
+      this.style.color = '#fff';
+    });
+    document.getElementById('product-minus-btn').addEventListener('mouseleave', function() {
+      this.style.background = '#23272f';
+      this.style.color = '#4f8cff';
+    });
+    document.getElementById('product-plus-btn').addEventListener('mouseenter', function() {
+      this.style.background = '#4f8cff';
+      this.style.color = '#fff';
+    });
+    document.getElementById('product-plus-btn').addEventListener('mouseleave', function() {
+      this.style.background = '#23272f';
+      this.style.color = '#4f8cff';
+    });
+
+    // Color chooser logic
+    function createColorSelect(id, label) {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', id);
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = label;
+      const selectElem = document.createElement('select');
+      selectElem.id = id;
+      selectElem.style.padding = '0.5rem 1rem';
+      selectElem.style.borderRadius = '6px';
+      selectElem.style.border = '1px solid #4f8cff';
+      selectElem.style.background = '#181a1b';
+      selectElem.style.color = '#f1f1f1';
+      selectElem.style.fontSize = '1rem';
+      [
+        {value:'black',text:'Black'},
+        {value:'white',text:'White'},
+        {value:'red',text:'Red'},
+        {value:'blue',text:'Blue'},
+        {value:'green',text:'Fluorecent Green'},
+        {value:'yellow',text:'Yellow'}
+      ].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        selectElem.appendChild(option);
+      });
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(selectElem);
+      return wrapper;
+    }
+    function createSpotifyInput() {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      wrapper.style.marginTop = '0.7rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', 'spotify-link-input');
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = 'Spotify song or playlist link:';
+      const inputElem = document.createElement('input');
+      inputElem.id = 'spotify-link-input';
+      inputElem.type = 'text';
+      inputElem.placeholder = 'Paste Spotify link here';
+      inputElem.style.padding = '0.5rem 1rem';
+      inputElem.style.borderRadius = '6px';
+      inputElem.style.border = '1px solid #4f8cff';
+      inputElem.style.background = '#181a1b';
+      inputElem.style.color = '#f1f1f1';
+      inputElem.style.fontSize = '1rem';
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(inputElem);
+      return wrapper;
+    }
+    function createBatteryTypeSelect() {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', 'battery-type-select');
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = 'Battery Type:';
+      const selectElem = document.createElement('select');
+      selectElem.id = 'battery-type-select';
+      selectElem.style.padding = '0.5rem 1rem';
+      selectElem.style.borderRadius = '6px';
+      selectElem.style.border = '1px solid #4f8cff';
+      selectElem.style.background = '#181a1b';
+      selectElem.style.color = '#f1f1f1';
+      selectElem.style.fontSize = '1rem';
+      ['AA', 'AAA'].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        selectElem.appendChild(option);
+      });
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(selectElem);
+      return wrapper;
+    }
+    function createShapeSelect(id, label) {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', id);
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = label;
+      const selectElem = document.createElement('select');
+      selectElem.id = id;
+      selectElem.style.padding = '0.5rem 1rem';
+      selectElem.style.borderRadius = '6px';
+      selectElem.style.border = '1px solid #4f8cff';
+      selectElem.style.background = '#181a1b';
+      selectElem.style.color = '#f1f1f1';
+      selectElem.style.fontSize = '1rem';
+      [
+        {value:'round',text:'Round'},
+        {value:'square',text:'Square'}
+      ].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        selectElem.appendChild(option);
+      });
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(selectElem);
+      return wrapper;
+    }
+    function createSizeSelect(id, label) {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', id);
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = label;
+      const selectElem = document.createElement('select');
+      selectElem.id = id;
+      selectElem.style.padding = '0.5rem 1rem';
+      selectElem.style.borderRadius = '6px';
+      selectElem.style.border = '1px solid #4f8cff';
+      selectElem.style.background = '#181a1b';
+      selectElem.style.color = '#f1f1f1';
+      selectElem.style.fontSize = '1rem';
+      for (let pct = 150; pct >= 50; pct -= 10) {
+        const option = document.createElement('option');
+        option.value = pct + '%';
+        option.textContent = pct + '%';
+        if (pct === 100) {
+          option.textContent += ' (Standard)';
+          option.selected = true;
+        }
+        selectElem.appendChild(option);
+      }
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(selectElem);
+      return wrapper;
+    }
+    function createJapandiSizeSelect(id, label) {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', id);
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = label;
+      const selectElem = document.createElement('select');
+      selectElem.id = id;
+      selectElem.style.padding = '0.5rem 1rem';
+      selectElem.style.borderRadius = '6px';
+      selectElem.style.border = '1px solid #4f8cff';
+      selectElem.style.background = '#181a1b';
+      selectElem.style.color = '#f1f1f1';
+      selectElem.style.fontSize = '1rem';
+      [
+        {value:'big',text:'Big (110mm x 110mm x 180mm)'},
+        {value:'small',text:'Small (86mm x 86mm x 115mm)'}
+      ].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        selectElem.appendChild(option);
+      });
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(selectElem);
+      return wrapper;
+    }
+    function createNumberInput(id, label, placeholder) {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.gap = '0.4rem';
+      const labelElem = document.createElement('label');
+      labelElem.setAttribute('for', id);
+      labelElem.style.fontSize = '1.05rem';
+      labelElem.style.color = '#f1f1f1';
+      labelElem.textContent = label;
+      const inputElem = document.createElement('input');
+      inputElem.id = id;
+      inputElem.type = 'number';
+      inputElem.placeholder = placeholder || '';
+      inputElem.style.padding = '0.5rem 1rem';
+      inputElem.style.borderRadius = '6px';
+      inputElem.style.border = '1px solid #4f8cff';
+      inputElem.style.background = '#181a1b';
+      inputElem.style.color = '#f1f1f1';
+      inputElem.style.fontSize = '1rem';
+      wrapper.appendChild(labelElem);
+      wrapper.appendChild(inputElem);
+      return wrapper;
+    }
+    // Place color chooser(s), Spotify input, and checkout button in the right column
+    const colorChooserAndBtn = document.getElementById('color-chooser-and-btn');
+    colorChooserAndBtn.innerHTML = '';
+    const colorChooserContainer = document.createElement('div');
+    colorChooserContainer.style.display = 'flex';
+    colorChooserContainer.style.flexDirection = 'column';
+    colorChooserContainer.style.gap = '1.1rem';
+    if (
+      productName.trim().toLowerCase() === 'spiral vase' ||
+      productName.trim().toLowerCase() === 'strata vase' ||
+      productName.trim().toLowerCase() === 'mcm vase' ||
+      productName.trim().toLowerCase() === 'wave vase' ||
+      productName.trim().toLowerCase() === 'evergreen vase'
+    ) {
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+      colorChooserContainer.appendChild(createSizeSelect('size-select', 'Size:'));
+    } else if (productName.trim().toLowerCase() === 'japandi vase') {
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+      colorChooserContainer.appendChild(createJapandiSizeSelect('japandi-size-select', 'Choose size:'));
+    } else if (productName.trim().toLowerCase() === 'spotify sleutelhanger') {
+      colorChooserContainer.appendChild(createColorSelect('text-color-select', 'Text color:'));
+      colorChooserContainer.appendChild(createColorSelect('base-color-select', 'Base color:'));
+      colorChooserContainer.appendChild(createSpotifyInput());
+    } else if (productName.trim().toLowerCase() === 'piramide') {
+      colorChooserContainer.appendChild(createColorSelect('outer-color-select', 'Outer:'));
+      colorChooserContainer.appendChild(createColorSelect('inner-color-select', 'Inner:'));
+  colorChooserContainer.appendChild(createSizeSelect('piramide-size-select', 'Size:'));
+      colorChooserContainer.appendChild(createShapeSelect('shape-select', 'Shape:'));
+    } else if (productName.trim().toLowerCase() === 'corn fidget toy') {
+      // Add size chooser to corn fidget toy
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+      colorChooserContainer.appendChild(createSizeSelect('corn-size-select', 'Size:'));
+    } else if (productName.trim().toLowerCase() === 'middle finger lighter') {
+      colorChooserContainer.appendChild(createColorSelect('box-color-select', 'Box Color:'));
+      colorChooserContainer.appendChild(createColorSelect('finger-color-select', 'Finger Color:'));
+    } else if (productName.trim().toLowerCase() === 'battery dispenser') {
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+      colorChooserContainer.appendChild(createBatteryTypeSelect());
+    } else if (productName.trim().toLowerCase() === 'name keychain') {
+      // Add a text input for the name
+      const nameInputWrapper = document.createElement('div');
+      nameInputWrapper.style.display = 'flex';
+      nameInputWrapper.style.flexDirection = 'column';
+      nameInputWrapper.style.gap = '0.4rem';
+      const nameLabel = document.createElement('label');
+      nameLabel.setAttribute('for', 'name-input');
+      nameLabel.style.fontSize = '1.05rem';
+      nameLabel.style.color = '#f1f1f1';
+      nameLabel.textContent = 'Enter name:';
+      const nameInput = document.createElement('input');
+      nameInput.id = 'name-input';
+      nameInput.type = 'text';
+      nameInput.placeholder = 'Name';
+      nameInput.style.padding = '0.5rem 1rem';
+      nameInput.style.borderRadius = '6px';
+      nameInput.style.border = '1px solid #4f8cff';
+      nameInput.style.background = '#181a1b';
+      nameInput.style.color = '#f1f1f1';
+      nameInput.style.fontSize = '1rem';
+      nameInputWrapper.appendChild(nameLabel);
+      nameInputWrapper.appendChild(nameInput);
+      colorChooserContainer.appendChild(nameInputWrapper);
+      // Add base color and text color choosers
+      colorChooserContainer.appendChild(createColorSelect('base-color-select', 'Base color:'));
+      colorChooserContainer.appendChild(createColorSelect('text-color-select', 'Text color:'));
+    } else if (productName.trim().toLowerCase() === 'guitar wall mount') {
+      // Add a color chooser
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+      // Add a select for guitar type
+      const guitarTypeWrapper = document.createElement('div');
+      guitarTypeWrapper.style.display = 'flex';
+      guitarTypeWrapper.style.flexDirection = 'column';
+      guitarTypeWrapper.style.gap = '0.4rem';
+      const guitarTypeLabel = document.createElement('label');
+      guitarTypeLabel.setAttribute('for', 'guitar-type-select');
+      guitarTypeLabel.style.fontSize = '1.05rem';
+      guitarTypeLabel.style.color = '#f1f1f1';
+      guitarTypeLabel.textContent = 'Guitar Type:';
+      const guitarTypeSelect = document.createElement('select');
+      guitarTypeSelect.id = 'guitar-type-select';
+      guitarTypeSelect.style.padding = '0.5rem 1rem';
+      guitarTypeSelect.style.borderRadius = '6px';
+      guitarTypeSelect.style.border = '1px solid #4f8cff';
+      guitarTypeSelect.style.background = '#181a1b';
+      guitarTypeSelect.style.color = '#f1f1f1';
+      guitarTypeSelect.style.fontSize = '1rem';
+      [
+        {value:'electric',text:'Electric Guitar'},
+        {value:'acoustic',text:'Acoustic Guitar'}
+      ].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        guitarTypeSelect.appendChild(option);
+      });
+      guitarTypeWrapper.appendChild(guitarTypeLabel);
+      guitarTypeWrapper.appendChild(guitarTypeSelect);
+      colorChooserContainer.appendChild(guitarTypeWrapper);
+    } else if (productName.trim().toLowerCase() === 'gridfinity grid') {
+      // Two numeric inputs: drawer width and drawer depth in millimeters
+      colorChooserContainer.appendChild(createNumberInput('grid-drawer-width-mm', 'Drawer width (mm):', 'e.g. 300'));
+      colorChooserContainer.appendChild(createNumberInput('grid-drawer-depth-mm', 'Drawer depth (mm):', 'e.g. 450'));
+      // Small note about custom plates
+      const note = document.createElement('div');
+      note.style.color = '#cfcfcf';
+      note.style.fontSize = '0.95rem';
+      note.style.marginTop = '0.4rem';
+      note.textContent = 'We will calculate the best fit plates for your drawer from these dimensions.';
+      colorChooserContainer.appendChild(note);
+    } else if (productName.trim().toLowerCase() === 'gridfinity hollow bin') {
+  // Color chooser, labels option, finger slide
+  colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+  const labelWrapper2 = document.createElement('div');
+  labelWrapper2.style.display = 'flex';
+  labelWrapper2.style.flexDirection = 'column';
+  labelWrapper2.style.gap = '0.4rem';
+  const labelLabel2 = document.createElement('label');
+  labelLabel2.setAttribute('for', 'labels-select');
+  labelLabel2.style.fontSize = '1.05rem';
+  labelLabel2.style.color = '#f1f1f1';
+  labelLabel2.textContent = 'Add labels?';
+  const labelSelect2 = document.createElement('select');
+  labelSelect2.id = 'labels-select';
+  ['No','Yes'].forEach(opt => { const o = document.createElement('option'); o.value = opt.toLowerCase(); o.textContent = opt; labelSelect2.appendChild(o); });
+  labelSelect2.style.padding = '0.5rem 1rem'; labelSelect2.style.borderRadius = '6px'; labelSelect2.style.border = '1px solid #4f8cff'; labelSelect2.style.background = '#181a1b'; labelSelect2.style.color = '#f1f1f1'; labelSelect2.style.fontSize = '1rem';
+  labelWrapper2.appendChild(labelLabel2);
+  labelWrapper2.appendChild(labelSelect2);
+  colorChooserContainer.appendChild(labelWrapper2);
+  const fingerWrapper2 = document.createElement('div');
+  fingerWrapper2.style.display = 'flex';
+  fingerWrapper2.style.alignItems = 'center';
+  fingerWrapper2.style.gap = '0.6rem';
+  fingerWrapper2.style.marginTop = '0.4rem';
+  const fingerCheckbox2 = document.createElement('input');
+  fingerCheckbox2.type = 'checkbox';
+  fingerCheckbox2.id = 'finger-slide-checkbox';
+  const fingerLabel2 = document.createElement('label');
+  fingerLabel2.setAttribute('for', 'finger-slide-checkbox');
+  fingerLabel2.style.color = '#f1f1f1';
+  fingerLabel2.textContent = 'Add finger slide (bigger fillet for easy picking)';
+  fingerWrapper2.appendChild(fingerCheckbox2);
+  fingerWrapper2.appendChild(fingerLabel2);
+  colorChooserContainer.appendChild(fingerWrapper2);
+  // Three numeric inputs: height, width, depth in units (height unit = 7mm, length/depth unit = 42mm)
+  colorChooserContainer.appendChild(createNumberInput('hollow-height-units', 'Height (units) — 1 unit = 7mm:', 'e.g. 3'));
+  colorChooserContainer.appendChild(createNumberInput('hollow-width-units', 'Width (units) — 1 unit = 42mm:', 'e.g. 2'));
+  colorChooserContainer.appendChild(createNumberInput('hollow-depth-units', 'Depth (units) — 1 unit = 42mm:', 'e.g. 1'));
+  const note2 = document.createElement('div');
+  note2.style.color = '#cfcfcf';
+  note2.style.fontSize = '0.95rem';
+  note2.style.marginTop = '0.4rem';
+  note2.textContent = 'Sizes use Gridfinity units: height=7mm/unit; width/depth=42mm/unit.';
+  colorChooserContainer.appendChild(note2);
+    } else {
+      colorChooserContainer.appendChild(createColorSelect('color-select', 'Choose color:'));
+    }
+    colorChooserAndBtn.appendChild(colorChooserContainer);
+    // Add cart and checkout buttons below choosers
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexDirection = 'column';
+    buttonContainer.style.gap = '0.8rem';
+    buttonContainer.style.marginTop = '1rem';
+    
+    const addToCartBtn = document.createElement('button');
+    addToCartBtn.id = 'add-to-cart-btn';
+    addToCartBtn.textContent = 'Add to Cart';
+    addToCartBtn.style.alignSelf = 'stretch';
+    addToCartBtn.style.background = '#23272f';
+    addToCartBtn.style.color = '#4f8cff';
+    addToCartBtn.style.border = '2px solid #4f8cff';
+    addToCartBtn.style.borderRadius = '8px';
+    addToCartBtn.style.padding = '1rem 1.5rem';
+    addToCartBtn.style.fontSize = '1.1rem';
+    addToCartBtn.style.fontWeight = '600';
+    addToCartBtn.style.cursor = 'pointer';
+    addToCartBtn.style.transition = 'background 0.2s, color 0.2s';
+    
+    const checkoutBtn = document.createElement('button');
+    checkoutBtn.id = 'continue-checkout-btn';
+    checkoutBtn.textContent = 'Continue to Checkout';
+    checkoutBtn.style.alignSelf = 'stretch';
+    checkoutBtn.style.background = '#4f8cff';
+    checkoutBtn.style.color = '#fff';
+    checkoutBtn.style.border = 'none';
+    checkoutBtn.style.borderRadius = '8px';
+    checkoutBtn.style.padding = '1rem 1.5rem';
+    checkoutBtn.style.fontSize = '1.1rem';
+    checkoutBtn.style.fontWeight = '600';
+    checkoutBtn.style.cursor = 'pointer';
+    checkoutBtn.style.transition = 'background 0.2s';
+    
+    buttonContainer.appendChild(addToCartBtn);
+    buttonContainer.appendChild(checkoutBtn);
+    colorChooserAndBtn.appendChild(buttonContainer);
+
+    // Dynamic price logic for vases with size chooser
+    const vaseBasePrices = {
+      'evergreen vase': 11,
+      'spiral vase': 9,
+      'strata vase': 12,
+      'mcm vase': 11,
+      'wave vase': 15
+    };
+    const lowerName = productName.trim().toLowerCase();
+    if (vaseBasePrices[lowerName]) {
+      const basePrice = vaseBasePrices[lowerName];
+      const priceElem = document.getElementById('product-price');
+      const sizeSelect = document.getElementById('size-select');
+      function updateVasePrice() {
+        const pct = parseInt(sizeSelect.value);
+        const newPrice = (basePrice * (pct / 100)).toFixed(2).replace('.', ',');
+        priceElem.textContent = `€ ${newPrice}`;
+      }
+      sizeSelect.addEventListener('change', updateVasePrice);
+      updateVasePrice();
+    }
+
+    // Dynamic price logic for Japandi Vase (big/small)
+    if (lowerName === 'japandi vase') {
+      const priceElem = document.getElementById('product-price');
+      const sizeSelect = document.getElementById('japandi-size-select');
+      function updateJapandiPrice() {
+        const size = sizeSelect.value;
+        let price = size === 'big' ? 12 : 10;
+        priceElem.textContent = `€ ${price.toFixed(2).replace('.', ',')}`;
+      }
+      sizeSelect.addEventListener('change', updateJapandiPrice);
+      updateJapandiPrice();
+    }
+
+    // Dynamic price logic for Piramide and Corn Fidget Toy size selectors
+    // Assumption: base prices at 100% (Standard) are defined here.
+    // - Piramide base price = €6.00
+    // - Corn fidget toy base price = €4.00
+  const piramideBasePrice = 1.50;
+  const cornBasePrice = 1.50;
+
+    if (lowerName === 'piramide') {
+      const priceElem = document.getElementById('product-price');
+      const sizeSelect = document.getElementById('piramide-size-select');
+      function updatePiramidePrice() {
+        const pct = sizeSelect ? parseInt(sizeSelect.value) : 100;
+        const newPrice = (piramideBasePrice * (pct / 100)).toFixed(2).replace('.', ',');
+        priceElem.textContent = `€ ${newPrice}`;
+      }
+      if (sizeSelect) {
+        sizeSelect.addEventListener('change', updatePiramidePrice);
+        updatePiramidePrice();
+      }
+    }
+
+    if (lowerName === 'corn fidget toy') {
+      const priceElem = document.getElementById('product-price');
+      const sizeSelect = document.getElementById('corn-size-select');
+      function updateCornPrice() {
+        const pct = sizeSelect ? parseInt(sizeSelect.value) : 100;
+        const newPrice = (cornBasePrice * (pct / 100)).toFixed(2).replace('.', ',');
+        priceElem.textContent = `€ ${newPrice}`;
+      }
+      if (sizeSelect) {
+        sizeSelect.addEventListener('change', updateCornPrice);
+        updateCornPrice();
+      }
+    }
+
+    // Cart functionality
+    function getCart() {
+      const cart = localStorage.getItem('shoppingCart');
+      return cart ? JSON.parse(cart) : [];
+    }
+    
+    function saveCart(cart) {
+      localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    }
+    
+    function updateCartCount() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = totalItems;
+    }
+    
+    // Update cart count on page load
+    updateCartCount();
+    
+    // Listen for storage changes (when cart is updated from other tabs)
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'shoppingCart') {
+        updateCartCount();
+      }
+    });
+    
+    function addToCart() {
+      const cart = getCart();
+      const params = new URLSearchParams();
+      params.set('product', productName);
+      let priceToSend = getQueryParam('price') || '';
+      if (lowerName === 'japandi vase') {
+        const size = document.getElementById('japandi-size-select').value;
+        priceToSend = size === 'big' ? '€ 12,00' : '€ 10,00';
+      } else if (vaseBasePrices[lowerName]) {
+        const pct = parseInt(document.getElementById('size-select').value);
+        priceToSend = `€ ${(vaseBasePrices[lowerName] * (pct / 100)).toFixed(2).replace('.', ',')}`;
+      } else if (lowerName === 'piramide') {
+        const pct = document.getElementById('piramide-size-select') ? parseInt(document.getElementById('piramide-size-select').value) : 100;
+        priceToSend = `€ ${(piramideBasePrice * (pct / 100)).toFixed(2).replace('.', ',')}`;
+      } else if (lowerName === 'corn fidget toy') {
+        const pct = document.getElementById('corn-size-select') ? parseInt(document.getElementById('corn-size-select').value) : 100;
+        priceToSend = `€ ${(cornBasePrice * (pct / 100)).toFixed(2).replace('.', ',')}`;
+      }
+      params.set('price', priceToSend);
+      params.set('img', document.getElementById('product-img').src);
+      params.set('quantity', currentQuantity);
+      
+      // Add product-specific options
+      if (
+        productName.trim().toLowerCase() === 'spiral vase' ||
+        productName.trim().toLowerCase() === 'strata vase' ||
+        productName.trim().toLowerCase() === 'mcm vase' ||
+        productName.trim().toLowerCase() === 'wave vase' ||
+        productName.trim().toLowerCase() === 'evergreen vase'
+      ) {
+        params.set('color', document.getElementById('color-select').value);
+        params.set('size', document.getElementById('size-select').value);
+      } else if (productName.trim().toLowerCase() === 'japandi vase') {
+        params.set('color', document.getElementById('color-select').value);
+        params.set('size', document.getElementById('japandi-size-select').value);
+      } else if (productName.trim().toLowerCase() === 'spotify sleutelhanger') {
+        params.set('textColor', document.getElementById('text-color-select').value);
+        params.set('baseColor', document.getElementById('base-color-select').value);
+        params.set('spotify', document.getElementById('spotify-link-input').value);
+      } else if (productName.trim().toLowerCase() === 'piramide') {
+        params.set('outerColor', document.getElementById('outer-color-select').value);
+        params.set('innerColor', document.getElementById('inner-color-select').value);
+        params.set('shape', document.getElementById('shape-select').value);
+        params.set('size', document.getElementById('piramide-size-select') ? document.getElementById('piramide-size-select').value : '');
+      } else if (productName.trim().toLowerCase() === 'corn fidget toy') {
+        params.set('color', document.getElementById('color-select') ? document.getElementById('color-select').value : '');
+        params.set('size', document.getElementById('corn-size-select') ? document.getElementById('corn-size-select').value : '');
+      } else if (productName.trim().toLowerCase() === 'battery dispenser') {
+        params.set('color', document.getElementById('color-select').value);
+        params.set('batteryType', document.getElementById('battery-type-select').value);
+      } else if (productName.trim().toLowerCase() === 'name keychain') {
+        params.set('name', document.getElementById('name-input').value);
+        params.set('baseColor', document.getElementById('base-color-select').value);
+        params.set('textColor', document.getElementById('text-color-select').value);
+      } else if (productName.trim().toLowerCase() === 'guitar wall mount') {
+        params.set('color', document.getElementById('color-select').value);
+        params.set('guitarType', document.getElementById('guitar-type-select').value);
+      
+      } else if (productName.trim().toLowerCase() === 'gridfinity grid') {
+        // collect drawer dimensions in mm
+        const w = document.getElementById('grid-drawer-width-mm') ? document.getElementById('grid-drawer-width-mm').value : '';
+        const d = document.getElementById('grid-drawer-depth-mm') ? document.getElementById('grid-drawer-depth-mm').value : '';
+        params.set('drawerWidthMm', w);
+        params.set('drawerDepthMm', d);
+        // price depends on size; keep price param as provided or 'Depends'
+        params.set('priceNote', getQueryParam('price') || 'Depends');
+
+      } else if (productName.trim().toLowerCase() === 'gridfinity hollow bin') {
+  params.set('color', document.getElementById('color-select') ? document.getElementById('color-select').value : '');
+  params.set('labels', document.getElementById('labels-select') ? document.getElementById('labels-select').value : 'no');
+  params.set('fingerSlide', document.getElementById('finger-slide-checkbox') ? (document.getElementById('finger-slide-checkbox').checked ? 'yes' : 'no') : 'no');
+        const h = document.getElementById('hollow-height-units') ? document.getElementById('hollow-height-units').value : '';
+        const w = document.getElementById('hollow-width-units') ? document.getElementById('hollow-width-units').value : '';
+        const d = document.getElementById('hollow-depth-units') ? document.getElementById('hollow-depth-units').value : '';
+        params.set('hollowHeightUnits', h);
+        params.set('hollowWidthUnits', w);
+        params.set('hollowDepthUnits', d);
+        params.set('priceNote', getQueryParam('price') || 'Depends');
+      } else {
+        params.set('color', document.getElementById('color-select').value);
+      }
+      
+      // Create cart item
+      const cartItem = {
+        id: Date.now() + Math.random(), // Unique ID
+        product: productName,
+        price: priceToSend,
+        img: document.getElementById('product-img').src,
+        quantity: currentQuantity,
+        options: Object.fromEntries(params.entries())
+      };
+      
+      cart.push(cartItem);
+      saveCart(cart);
+      updateCartCount();
+      
+      // Show popup modal
+      showCartPopup();
+    }
+    
+    function showCartPopup() {
+      const popup = document.getElementById('cart-popup-overlay');
+      popup.classList.add('show');
+      
+      // Close popup when clicking outside
+      popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+          hideCartPopup();
+        }
+      });
+      
+      // Close popup when clicking "Keep Shopping"
+      document.getElementById('popup-keep-shopping').addEventListener('click', function() {
+        hideCartPopup();
+      });
+      
+      // Close popup when clicking the X button
+      document.getElementById('popup-close-btn').addEventListener('click', function() {
+        hideCartPopup();
+      });
+    }
+    
+    function hideCartPopup() {
+      const popup = document.getElementById('cart-popup-overlay');
+      popup.classList.remove('show');
+    }
+    
+    // Add to cart button logic
+    addToCartBtn.addEventListener('click', addToCart);
+    addToCartBtn.addEventListener('mouseenter', function() {
+      if (this.textContent === 'Add to Cart') {
+        this.style.background = '#4f8cff';
+        this.style.color = '#fff';
+      }
+    });
+    addToCartBtn.addEventListener('mouseleave', function() {
+      if (this.textContent === 'Add to Cart') {
+        this.style.background = '#23272f';
+        this.style.color = '#4f8cff';
+      }
+    });
+
+    // Checkout button logic - Add to cart first, then go to checkout
+    checkoutBtn.addEventListener('click', function() {
+      // First add the item to cart
+      addToCart();
+      
+      // Then redirect to cart page
+      setTimeout(() => {
+        window.location.href = 'cart.html';
+      }, 100); // Small delay to ensure cart is saved
+    });
+  </script>
+</body>
+</html> 
