@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vases | 3D Print Shop</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://js.stripe.com/v3/"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a href="index.html" class="brand">3D Print Shop</a>
+      <nav class="main-menu" aria-label="Main menu">
+        <a href="index.html">Home</a>
+        <a href="vases.html" class="active">Vases</a>
+        <a href="fidget-toys.html">Fidget Toys</a>
+        <a href="puzzles.html">Puzzles</a>
+        <a href="keychains.html">Keychains</a>
+        <a href="custom.html">Custom</a>
+      </nav>
+      <div class="header-tools">
+        <div class="search-bar">
+          <input type="text" id="search-input" class="search-input" placeholder="Search products...">
+          <button class="search-btn" id="search-btn">🔍</button>
+        </div>
+        <a href="cart.html" id="header-cart-link" class="header-cart-link">
+          🛒 <span id="header-cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <header class="main-banner">
+    <h1>Vases</h1>
+    <a href="#products" class="scroll-down">&#8595;</a>
+  </header>
+
+  <main id="products" class="product-gallery">
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" data-info="# Evergreen Vase
+
+Geef je interieur een stijlvolle uitstraling!
+
+Maak kennis met de Evergreen Vase, een moderne en stijlvolle vaas met een uniek design dat meteen de aandacht trekt. Dankzij de bijzondere vormgeving is deze vaas niet alleen een praktische plek voor je favoriete bloemen, maar ook een decoratief element dat perfect past in verschillende interieurs.
+
+Of je hem nu op de eettafel, een kast, een bureau of in de woonkamer plaatst, de Evergreen Vase voegt een subtiele maar opvallende toets toe aan je omgeving.
+
+## Stijlvol design voor elk interieur
+
+De Evergreen Vase combineert een modern uiterlijk met een tijdloos karakter. Het stijlvolle ontwerp maakt hem geschikt voor verschillende interieurstijlen, van minimalistisch en modern tot gezellig en klassiek.
+
+Gebruik hem om je favoriete bloemen een mooie plaats te geven of laat hem gewoon op zichzelf schitteren als decoratief object. Zelfs zonder bloemen blijft de Evergreen Vase een echte blikvanger.
+
+## Kies jouw favoriete kleur
+
+Maak de Evergreen Vase helemaal passend bij jouw interieur! Je kan zelf de kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Ga voor een neutrale tint die perfect aansluit bij je inrichting of kies een opvallende kleur om de vaas extra in het oog te laten springen.
+
+## Productspecificaties
+
+- Naam: Evergreen Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern en stijlvol
+- Doelgroep: Iedereen
+- Afmetingen: 130 × 135 × 153 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 170 gram
+- Printtijd: Ongeveer 3 uur en 48 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Een stijlvolle toevoeging aan jouw interieur
+
+Met zijn unieke design, personaliseerbare kleur en veelzijdige uitstraling is de Evergreen Vase een mooie combinatie van functionaliteit en decoratie.
+
+Geef je bloemen een bijzondere plaats en maak van een eenvoudig interieurdetail iets speciaals.
+
+Evergreen Vase: stijlvol, modern en helemaal naar jouw smaak!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USc17677e2b954a3/design/2024-10-27_0e18808de094b.jpg?x-oss-process=image/resize,w_1920/format,webp" alt="Evergreen Vase">
+      <h3>Evergreen Vase</h3>
+      <p class="price">€ 12,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_7ebd52132579.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_250e44ebd578d.png?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_c08c72240d129.png?x-oss-process=image/resize,w_1000/format,webp" data-info="# Japandi Vase
+
+Minimalistische elegantie voor een stijlvol interieur!
+
+Ontdek de Japandi Vase, een moderne decoratieve vaas die eenvoud, elegantie en een tijdloos design combineert. Geïnspireerd door de populaire Japandi-stijl, brengt deze vaas een rustige en verfijnde uitstraling in elke ruimte.
+
+Met haar stijlvolle vormgeving is de Japandi Vase een prachtige toevoeging aan je interieur. Plaats haar op een kast, eettafel, bureau of dressoir en creëer meteen een gezellige en moderne sfeer.
+
+## Een design dat bij elk interieur past
+
+De Japandi Vase combineert een minimalistische uitstraling met een modern ontwerp. Dankzij haar subtiele vormgeving past ze moeiteloos in uiteenlopende interieurstijlen.
+
+Gebruik de vaas als decoratief object of combineer haar met droogbloemen en andere decoratieve elementen om je interieur een persoonlijke toets te geven.
+
+**Let op:** deze vaas is niet waterdicht en is daarom uitsluitend geschikt voor droogbloemen en decoratief gebruik.
+
+## Twee formaten, jouw favoriete kleur
+
+De Japandi Vase is verkrijgbaar in twee verschillende formaten:
+
+- Klein: 86 × 86 × 115 mm
+- Groot: 110 × 110 × 180 mm
+
+Zo kan je zelf bepalen welk formaat het beste bij jouw interieur past. Je kan bovendien de kleur volledig zelf kiezen uit alle beschikbare kleuren op onze website.
+
+Combineer verschillende formaten en kleuren voor een extra stijlvolle uitstraling!
+
+## Productspecificaties
+
+- Naam: Japandi Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern en minimalistisch, geïnspireerd op de Japandi-stijl
+- Doelgroep: Iedereen
+- Beschikbare formaten: Klein en groot
+- Afmetingen klein: 86 × 86 × 115 mm
+- Afmetingen groot: 110 × 110 × 180 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 209 gram
+- Printtijd: Ongeveer 11 uur en 18 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Niet waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Eenvoud maakt het verschil
+
+Met haar moderne uitstraling, twee beschikbare formaten en ruime kleurkeuze is de Japandi Vase een stijlvolle manier om je interieur een persoonlijke toets te geven.
+
+Of je nu kiest voor het compacte formaat of de grotere variant, deze vaas brengt een vleugje minimalistische elegantie in huis.
+
+Japandi Vase: less is more!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US1f1c7b7bde3192/design/2025-01-07_7ebd52132579.png?x-oss-process=image/resize,w_1000/format,webp" alt="Japandi Vase">
+      <h3>Japandi Vase</h3>
+      <p class="price">€ 12,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/design/2023-12-05_44807718a6b6c.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/195690352/instance/2025-01-06_b9ff921d06f1c.jpeg?x-oss-process=image%2Fresize%2Cw_300%2Fformat%2Cwebp" data-img3="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/109706139/instance/2024-08-11_0f96ed5c9a155.jpg?x-oss-process=image%2Fresize%2Cw_300%2Fformat%2Cwebp" data-info="# Spiral Vase
+
+Een speels spiraaldesign dat meteen de aandacht trekt!
+
+Maak kennis met de Spiral Vase, een unieke bloemenvaas met een opvallend spiraalvormig ontwerp. Dankzij de elegante draaiende lijnen krijgt deze vaas een dynamische en moderne uitstraling die van elke ruimte iets bijzonders maakt.
+
+De Spiral Vase is meer dan alleen een praktische bloemenvaas. Haar bijzondere vormgeving maakt haar ook een decoratief object dat perfect tot zijn recht komt op een eettafel, kast, bureau of vensterbank.
+
+## Een uniek spiraalvormig design
+
+Wat de Spiral Vase zo bijzonder maakt, is haar karakteristieke spiraalstructuur. De vloeiende lijnen geven de vaas een speelse en stijlvolle uitstraling die verschilt van traditionele vaasontwerpen.
+
+Gebruik haar om je favoriete bloemen een mooie plaats te geven of laat haar zonder bloemen schitteren als decoratief element. Dankzij het opvallende ontwerp past ze zowel in moderne als creatieve interieurs.
+
+## Kies jouw favoriete kleur
+
+Maak de Spiral Vase helemaal naar jouw smaak! Je kan zelf de kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Ga voor een subtiele kleur die mooi aansluit bij je interieur of kies een opvallende tint waarmee de spiraalvorm extra in het oog springt.
+
+## Productspecificaties
+
+- Naam: Spiral Vase
+- Type: Decoratieve bloemenvaas
+- Design: Spiraalvormig
+- Doelgroep: Iedereen
+- Afmetingen: 95 × 95 × 150 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 52 gram
+- Printtijd: Ongeveer 1 uur en 6 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Geef je bloemen een bijzondere plek!
+
+Met haar unieke spiraalvorm, moderne uitstraling en personaliseerbare kleur is de Spiral Vase een originele toevoeging aan elk interieur.
+
+Een kleine verandering met een opvallend resultaat!
+
+Spiral Vase: draai je interieur naar een hoger niveau!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USae00ac72accfc4/design/2023-12-05_44807718a6b6c.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Spiral Vase">
+      <h3>Spiral Vase</h3>
+      <p class="price">€ 9,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_9c51993a4acc2.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_b32d650d17a39.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_ff5f6160eb07d.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="# Strata Vase
+
+Een modern design met karakter en diepte!
+
+Ontdek de Strata Vase, een stijlvolle bloemenvaas met een uniek gelaagd ontwerp. De bijzondere Strata-vorm geeft de vaas een moderne en dynamische uitstraling, waardoor ze meteen opvalt in elk interieur.
+
+Dankzij haar geometrische vormgeving en opvallende structuur is de Strata Vase niet zomaar een gewone bloemenvaas. Ze combineert functionaliteit met een decoratief design en vormt zo een echte blikvanger in je woonkamer, keuken, slaapkamer of kantoor.
+
+## Een opvallend gelaagd ontwerp
+
+Het bijzondere aan de Strata Vase is haar moderne, gelaagde vorm. De verschillende lijnen en structuren creëren een interessant visueel effect dat vanuit verschillende hoeken telkens anders tot zijn recht komt.
+
+Gebruik de vaas om je favoriete bloemen een mooie plaats te geven of laat haar zelfstandig schitteren als decoratief object. Haar moderne uitstraling maakt haar geschikt voor uiteenlopende interieurstijlen.
+
+## Kies jouw favoriete kleur
+
+Geef de Strata Vase een persoonlijke uitstraling! Je kan zelf de gewenste kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Kies een subtiele tint voor een minimalistische uitstraling of ga voor een opvallende kleur die het unieke ontwerp extra benadrukt.
+
+## Productspecificaties
+
+- Naam: Strata Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern gelaagd Strata-ontwerp
+- Doelgroep: Iedereen
+- Afmetingen: 100 × 100 × 170 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 202 gram
+- Printtijd: Ongeveer 8 uur en 18 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Geef je interieur een moderne toets!
+
+Met haar unieke gelaagde structuur, moderne vormgeving en personaliseerbare kleur is de Strata Vase een stijlvolle toevoeging aan elk interieur.
+
+Of je nu je favoriete bloemen wilt presenteren of gewoon op zoek bent naar een bijzonder decoratief object, deze vaas combineert beide op een elegante manier.
+
+Strata Vase: modern design, laag voor laag!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US90fab3408e1e87/design/2024-08-17_9c51993a4acc2.png?x-oss-process=image/resize,w_1000/format,webp" alt="Strata Vase">
+      <h3>Strata Vase</h3>
+      <p class="price">€ 12,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/design/2023-09-22_d65b322d08f15.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/265948516/instance/2025-04-02_aa56b643d0f6f8.jpeg?x-oss-process=image%2Fresize%2Cw_300%2Fformat%2Cwebp" data-img3="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/design/2023-09-22_d65b322d08f15.png?x-oss-process=image/resize,w_1000/format,webp" data-info="# MCM Vase
+
+Tijdloze elegantie met een moderne uitstraling!
+
+Maak kennis met de MCM Vase, een stijlvolle en slanke bloemenvaas die eenvoud en modern design perfect combineert. Met haar smalle vorm en elegante uitstraling is deze vaas een subtiele maar bijzondere toevoeging aan elk interieur.
+
+Dankzij het verfijnde ontwerp neemt de MCM Vase weinig ruimte in beslag, terwijl ze toch voldoende opvalt om een decoratief accent te vormen. Ideaal voor op een eettafel, vensterbank, kast of bureau.
+
+## Slank design, stijlvolle uitstraling
+
+De MCM Vase onderscheidt zich door haar moderne en smalle vormgeving. Het minimalistische ontwerp zorgt ervoor dat de vaas gemakkelijk te combineren is met verschillende interieurstijlen.
+
+Gebruik haar om je favoriete bloemen op een elegante manier te presenteren. Door haar slanke vorm is ze bijzonder geschikt voor een kleiner boeket of enkele losse bloemen.
+
+Ook zonder bloemen blijft de MCM Vase een mooi decoratief object dat je interieur net dat beetje extra geeft.
+
+## Kies jouw favoriete kleur
+
+Maak de MCM Vase helemaal naar jouw smaak! Je kan zelf de kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Ga voor een neutrale kleur die rust uitstraalt of kies een opvallende tint om een kleurrijk accent aan je interieur toe te voegen.
+
+## Productspecificaties
+
+- Naam: MCM Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern, slank en minimalistisch
+- Doelgroep: Iedereen
+- Afmetingen: 85 × 85 × 180 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 103 gram
+- Printtijd: Ongeveer 4 uur en 18 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Een subtiel detail met een groot verschil
+
+Met haar slanke vorm, moderne uitstraling en personaliseerbare kleur is de MCM Vase een stijlvolle keuze voor elk interieur.
+
+Perfect om bloemen in de kijker te zetten of om gewoon als decoratief accent te gebruiken.
+
+MCM Vase: elegantie zit in eenvoud!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/UScdf9d2cb9d1f2c/design/2023-09-22_d65b322d08f15.png?x-oss-process=image/resize,w_1000/format,webp" alt="MCM Vase">
+      <h3>MCM Vase</h3>
+      <p class="price">€ 11,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_d9d5f19a37994.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_4675f39b6f3fa.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_d9d5f19a37994.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="# Wave Vase
+
+Breng beweging en elegantie in je interieur!
+
+Ontdek de Wave Vase, een moderne en opvallende bloemenvaas met een uniek golvend ontwerp. De brede vorm en vloeiende lijnen geven deze vaas een speelse maar stijlvolle uitstraling, waardoor ze meteen de aandacht trekt.
+
+De Wave Vase combineert een decoratief karakter met praktisch gebruik. Of je haar nu vult met een kleurrijk boeket of gewoon als decoratief object neerzet, ze vormt een echte blikvanger in elke ruimte.
+
+## Een golvend design met karakter
+
+Wat de Wave Vase bijzonder maakt, is haar moderne wave design. De golvende structuur zorgt voor een dynamisch effect en geeft de vaas een unieke uitstraling vanuit elke hoek.
+
+Dankzij haar bredere vorm biedt ze voldoende ruimte om verschillende soorten bloemen mooi te presenteren. Ze past perfect op een eettafel, dressoir, kast of vensterbank.
+
+## Kies jouw favoriete kleur
+
+Maak de Wave Vase helemaal naar jouw smaak! Je kan zelf de kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Kies een rustige tint voor een elegante uitstraling of ga voor een opvallende kleur waarmee het golvende ontwerp extra in het oog springt.
+
+## Productspecificaties
+
+- Naam: Wave Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern en breed met golvende structuur
+- Doelgroep: Iedereen
+- Afmetingen: 140 × 140 × 180 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 180 gram
+- Printtijd: Ongeveer 5 uur en 24 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Laat je interieur golven van stijl!
+
+Met haar brede vorm, unieke wave design en personaliseerbare kleur is de Wave Vase een originele toevoeging aan elk interieur.
+
+Geef je favoriete bloemen een bijzondere plek en laat het golvende ontwerp voor zichzelf spreken.
+
+Wave Vase: een vloeiende combinatie van design en elegantie!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USe8b5a82671f38d/design/2024-12-26_d9d5f19a37994.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Wave Vase">
+      <h3>Wave Vase</h3>
+      <p class="price">€ 15,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US6aa3ef67580f15/design/2025-04-30_99629fb8f2bd48.png?x-oss-process=image%2Fformat%2Cwebp" data-img2="https://makerworld.bblmw.com/makerworld/model/1370149/1416477/ratings/d01a40f0-3bbb-11f0-b1e7-034fdbc6c5b8.jpg?x-oss-process=image%2Fformat%2Cwebp" data-img3="https://makerworld.bblmw.com/makerworld/comment/20260731/4192241931/275ab99789adde3f.jpg?x-oss-process=image%2Fformat%2Cwebp" data-info="# Quell Vase
+
+Een elegant gedraaid design dat je interieur laat opvallen!
+
+Maak kennis met de Quell Vase, een moderne bloemenvaas met een bijzonder gedraaid strookpatroon. De vloeiende lijnen en gedraaide structuur geven de vaas een dynamische en stijlvolle uitstraling die meteen de aandacht trekt.
+
+Met haar unieke vormgeving is de Quell Vase meer dan alleen een vaas voor bloemen. Ze is ook een decoratief object dat een modern en verfijnd accent toevoegt aan elke ruimte.
+
+## Een uniek gedraaid patroon
+
+Het opvallendste kenmerk van de Quell Vase is het gedraaide strookpatroon dat rondom de vaas loopt. Dit zorgt voor een speels lijnenspel en geeft het ontwerp extra diepte en karakter.
+
+Dankzij haar moderne vorm past de Quell Vase in verschillende interieurstijlen. Plaats haar op een eettafel, dressoir, kast of vensterbank en geef je favoriete bloemen een bijzondere plek.
+
+Ook zonder bloemen blijft het gedraaide patroon een echte blikvanger.
+
+## Kies jouw favoriete kleur
+
+Maak de Quell Vase helemaal naar jouw smaak! Je kan zelf de gewenste kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Ga voor een subtiele tint die mooi aansluit bij je interieur of kies een opvallende kleur om het gedraaide patroon extra te benadrukken.
+
+## Productspecificaties
+
+- Naam: Quell Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern met gedraaid strookpatroon
+- Doelgroep: Iedereen
+- Afmetingen: 130 × 130 × 180 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 161 gram
+- Printtijd: Ongeveer 7 uur en 42 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Geef je bloemen een unieke uitstraling!
+
+Met haar gedraaide strookpatroon, moderne vormgeving en personaliseerbare kleur is de Quell Vase een stijlvolle toevoeging aan elk interieur.
+
+Een bijzonder ontwerp voor iedereen die houdt van originele decoratie en moderne vormen.
+
+Quell Vase: een draai aan traditioneel vaasdesign!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US6aa3ef67580f15/design/2025-04-30_99629fb8f2bd48.png?x-oss-process=image%2Fformat%2Cwebp" alt="Quell Vase">
+      <h3>Quell Vase</h3>
+      <p class="price">€ 14,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USfff1dbbab594cc/design/2025-10-14_a1d5f8475437f.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USfff1dbbab594cc/design/2025-10-14_36beba27ef64.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USfff1dbbab594cc/design/2025-10-14_06ab3ab5c2e0d.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="# Solara Vase
+
+Slanke elegantie met een moderne uitstraling!
+
+Ontdek de Solara Vase, een stijlvolle bloemenvaas met een lang en smal ontwerp. Haar elegante proporties en moderne vormgeving maken haar een subtiele maar opvallende toevoeging aan elk interieur.
+
+Dankzij haar slanke silhouet neemt de Solara Vase weinig ruimte in beslag, terwijl ze toch voldoende opvalt om een decoratief accent te vormen. Ideaal voor op een eettafel, vensterbank, kast of dressoir.
+
+## Een slank en modern design
+
+De Solara Vase onderscheidt zich door haar lange, smalle vorm. Het minimalistische ontwerp zorgt voor een verfijnde uitstraling die gemakkelijk te combineren is met verschillende interieurstijlen.
+
+Gebruik de vaas om je favoriete bloemen op een elegante manier te presenteren. Ze is bijzonder geschikt voor enkele losse bloemen of een klein boeket.
+
+Ook zonder bloemen blijft de Solara Vase een stijlvol decoratief object dat je interieur net dat beetje extra geeft.
+
+## Kies jouw favoriete kleur
+
+Maak de Solara Vase helemaal naar jouw smaak! Je kan zelf de gewenste kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Ga voor een neutrale tint voor een rustige uitstraling of kies een opvallende kleur om een extra accent aan je interieur toe te voegen.
+
+## Productspecificaties
+
+- Naam: Solara Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern, lang en smal
+- Doelgroep: Iedereen
+- Afmetingen: 90 × 90 × 180 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 213 gram
+- Printtijd: Ongeveer 5 uur en 42 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Een elegante blikvanger voor elk interieur
+
+Met haar slanke vormgeving, moderne uitstraling en personaliseerbare kleur is de Solara Vase een stijlvolle keuze voor iedere bloemenliefhebber.
+
+Geef je favoriete bloemen een bijzondere plek en voeg een vleugje moderne elegantie toe aan je interieur.
+
+Solara Vase: slank, stijlvol en helemaal naar jouw smaak!">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USfff1dbbab594cc/design/2025-10-14_a1d5f8475437f.png?x-oss-process=image/resize,w_1000/format,webp" alt="Solara Vase">
+      <h3>Solara Vase</h3>
+      <p class="price">€ 11,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US92a5e80a4956e7/design/2025-04-22_5d04a7299b0508.png?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US4f733e936c6e00/design/2024-08-22_44fb8929c2b41.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US4f733e936c6e00/design/2024-08-22_18c546b5bbf2c.jpg?x-oss-process=image%2Fformat%2Cwebp" data-info="# Radiate Vase
+
+Een stralend design met een unieke draai!
+
+Maak kennis met de Radiate Vase, een moderne bloemenvaas met een bijzonder gedraaid patroon en een elegante, geleidelijk versmallende vorm. De combinatie van vloeiende lijnen en veranderende breedtes geeft deze vaas een dynamische uitstraling die meteen de aandacht trekt.
+
+Met haar unieke vormgeving is de Radiate Vase meer dan alleen een praktische bloemenvaas. Ze is ook een stijlvol decoratief object dat een bijzonder accent toevoegt aan je woonkamer, keuken, slaapkamer of kantoor.
+
+## Een draai aan modern design
+
+Wat de Radiate Vase zo speciaal maakt, is de combinatie van haar versmallende vorm en het draaiende patroon rondom de vaas. De gedraaide lijnen creëren een interessant visueel effect en geven het ontwerp extra diepte en karakter.
+
+De elegante vorm maakt haar geschikt voor verschillende interieurstijlen. Gebruik haar om je favoriete bloemen te presenteren of laat haar gewoon zelfstandig schitteren als decoratief element.
+
+## Kies jouw favoriete kleur
+
+Geef de Radiate Vase een persoonlijke uitstraling! Je kan zelf de kleur kiezen uit alle beschikbare kleuren op onze website.
+
+Kies een subtiele tint voor een elegante uitstraling of ga voor een opvallende kleur om het draaiende patroon extra te benadrukken.
+
+## Productspecificaties
+
+- Naam: Radiate Vase
+- Type: Decoratieve bloemenvaas
+- Design: Modern, versmallend met een draaiend patroon
+- Doelgroep: Iedereen
+- Afmetingen: 90 × 90 × 180 mm
+- Materiaal: PLA-kunststof
+- Gewicht: 120 gram
+- Printtijd: Ongeveer 7 uur en 43 minuten
+- Kleur: Vrij te kiezen uit de beschikbare kleuren
+- Waterbestendigheid: Waterdicht
+- Onderhoud: Geen speciaal onderhoud nodig
+- Verpakking: Kartonnen doos met beschermende bubbeltjesfolie
+
+## Laat je interieur stralen!
+
+Met haar bijzondere draaiende patroon, elegante versmallende vorm en personaliseerbare kleur is de Radiate Vase een originele toevoeging aan elk interieur.
+
+Een modern ontwerp dat je favoriete bloemen én je interieur in de kijker zet.
+
+Radiate Vase: een unieke draai aan bloemen en design!"">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US92a5e80a4956e7/design/2025-04-22_5d04a7299b0508.png?x-oss-process=image/resize,w_1000/format,webp" alt="Radiate Vase">
+      <h3>Radiate Vase</h3>
+      <p class="price">€ 13,00</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/US4f733e936c6e00/design/2024-08-22_ed101561a24bf.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/US4f733e936c6e00/design/2024-08-22_ed101561a24bf.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/US4f733e936c6e00/design/2024-08-22_ed101561a24bf.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="3D printed vase. Product photo coming soon.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/US4f733e936c6e00/design/2024-08-22_ed101561a24bf.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Harmony Vase">
+      <h3>Harmony Vase</h3>
+      <p class="price">€ 12,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+
+    <div class="product-card" data-img1="https://makerworld.bblmw.com/makerworld/model/USca505296a3a135/design/2024-11-05_9f4f8554fc1378.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img2="https://makerworld.bblmw.com/makerworld/model/USca505296a3a135/design/2024-03-03_7f0zxwicl4yk.jpg?x-oss-process=image/resize,w_1000/format,webp" data-img3="https://makerworld.bblmw.com/makerworld/model/USca505296a3a135/design/2024-03-03_6l6pg208aibz.jpg?x-oss-process=image/resize,w_1000/format,webp" data-info="3D printed vase. Product photo coming soon.">
+      <img src="https://makerworld.bblmw.com/makerworld/model/USca505296a3a135/design/2024-11-05_9f4f8554fc1378.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Modern Spiral Vase">
+      <h3>Modern Spiral Vase</h3>
+      <p class="price">€ 10,50</p>
+      <button class="buy-btn">Buy</button>
+    </div>
+  </main>
+
+  <script>
+    const stripe = Stripe('pk_live_51RhEGyAUikPASWrhSIJC9JwDohwQc0SnYmiWYIXlvm8XnqNNLpBlJykIi8A0ulgecCDXl3nVLfIoO9sLRQ17IkPp00VFiODP5r');
+    emailjs.init('y7LqCrsi8J-atkUez');
+
+    function handleProductClick(productCard) {
+      if (productCard.classList.contains('request-card')) return;
+      var productName = productCard.querySelector('h3').textContent;
+      var productPrice = productCard.querySelector('.price').textContent;
+      var productImg1 = productCard.getAttribute('data-img1');
+      var productImg2 = productCard.getAttribute('data-img2');
+      var productImg3 = productCard.getAttribute('data-img3');
+      var productInfo = productCard.getAttribute('data-info');
+      var quantity = '1';
+      window.location.href = `product.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}&img1=${encodeURIComponent(productImg1)}&img2=${encodeURIComponent(productImg2)}&img3=${encodeURIComponent(productImg3)}&info=${encodeURIComponent(productInfo)}&quantity=${encodeURIComponent(quantity)}&returnTo=${encodeURIComponent(window.location.href)}`;
+    }
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('#open-request-modal')) return;
+        handleProductClick(this);
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('fade-in');
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.product-card').forEach(card => observer.observe(card));
+
+    function getCart() {
+      const cart = localStorage.getItem('shoppingCart');
+      return cart ? JSON.parse(cart) : [];
+    }
+    function updateHeaderCartCount() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      const el = document.getElementById('header-cart-count');
+      if (el) el.textContent = totalItems;
+    }
+    updateHeaderCartCount();
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'shoppingCart') updateHeaderCartCount();
+    });
+
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    const productGallery = document.getElementById('products');
+
+    function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      let visibleCount = 0;
+      productCards.forEach(card => {
+        const productName = card.querySelector('h3').textContent.toLowerCase();
+        const productInfo = card.getAttribute('data-info').toLowerCase();
+        if (productName.includes(searchTerm) || productInfo.includes(searchTerm) || searchTerm === '') {
+          card.style.display = 'block';
+          card.style.animation = 'fadeIn 0.3s ease-in';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      if (searchTerm !== '' && visibleCount < productCards.length) {
+        productGallery.style.justifyContent = 'center';
+      } else {
+        productGallery.style.justifyContent = 'start';
+      }
+    }
+
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keyup', performSearch);
+  </script>
+</body>
+</html>
